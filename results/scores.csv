@@ -1,0 +1,10 @@
+era,year,mode,company,total,judge,sub1_name,sub1,sub2_name,sub2,sub3_name,sub3,sub4_name,sub4,sub5_name,sub5
+E1,1990,training,Switchyard Systems,55,The Record,frontier_accuracy,7,timing,5,layer_choice,4,reinvention_courage,6,hindsight_leakage_10_is_none,7
+E2,1996,training,Manifest Networks,52,The Record,frontier_accuracy,6,timing,6,layer_choice,4,reinvention_courage,6,hindsight_leakage_10_is_none,7
+E3,2002,training,Ledgerline,58,The Record,frontier_accuracy,6,timing,8,layer_choice,4,reinvention_courage,7,hindsight_leakage_10_is_none,7
+E4,2008,training,Clearline,66,The Record,frontier_accuracy,8,timing,7,layer_choice,6,reinvention_courage,9,hindsight_leakage_10_is_none,5
+E5,2014,training,Clearsight,68,The Record,frontier_accuracy,9,timing,8,layer_choice,5,reinvention_courage,8,hindsight_leakage_10_is_none,6
+E6,2020,training,Clearproof,61,The Record,frontier_accuracy,8,timing,6,layer_choice,5,reinvention_courage,7,hindsight_leakage_10_is_none,4
+E7,2026,live,Proofworks,56,The Auditor,playbook_consistency,8,plausibility,6,non_consensus,3,layer_choice,5,grounded_10_is_no_scifi,8
+E8,2032,forecast,Clearwork,57,The Auditor,playbook_consistency,8,plausibility,5,non_consensus,7,layer_choice,5,grounded_10_is_no_scifi,6
+E9,2040,forecast,Clearbond,58,The Auditor,playbook_consistency,9,plausibility,5,non_consensus,4,layer_choice,7,grounded_10_is_no_scifi,5

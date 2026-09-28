@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frontier Lab 1990–2040</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+
+:root{
+  --bg:#F2F4F6; --surface:#FFFFFF; --ink:#16202A; --muted:#5A6774; --faint:#8995A1;
+  --line:#D8DEE4; --accent:#0E7470; --accent-soft:#DDF0EE; --fc:#A8690F; --fc-soft:#F6EBD9;
+  --bad:#B4412F; --band:#E9EDF1;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0D1318; --surface:#141C23; --ink:#E4EAF0; --muted:#98A6B3; --faint:#6E7C89;
+    --line:#26323C; --accent:#43B7B1; --accent-soft:#16312F; --fc:#E1A64B; --fc-soft:#33281A;
+    --bad:#E27A67; --band:#18222A;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0D1318; --surface:#141C23; --ink:#E4EAF0; --muted:#98A6B3; --faint:#6E7C89;
+  --line:#26323C; --accent:#43B7B1; --accent-soft:#16312F; --fc:#E1A64B; --fc-soft:#33281A;
+  --bad:#E27A67; --band:#18222A;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--body);margin:0}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:36px 64px;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.12}
+h1{font-size:clamp(30px,5vw,48px);font-weight:700;letter-spacing:-.02em}
+h2{font-size:24px;font-weight:700}
+h3{font-size:18px;font-weight:700}
+p{margin:0}
+.eyebrow{font:600 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:18px;color:var(--muted);max-width:66ch}
+header{display:flex;flex-direction:column;gap:14px}
+.stack{display:flex;flex-direction:column;gap:14px}
+.mono{font-family:var(--mono)}
+/* chart */
+.chartbox{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 18px 10px;position:relative}
+.chartbox svg{width:100%;height:auto;display:block;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);font:13px/1.35 var(--body);padding:8px 10px;border-radius:6px;max-width:240px;transform:translate(-50%,-110%)}
+.chart-note{font-size:13px;color:var(--muted);padding-top:6px}
+/* era selector */
+.eras{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:6px}
+.era-btn{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:3px;padding:10px 8px;border-radius:8px;border:1px solid var(--line);background:var(--surface);text-align:left;min-width:0}
+.era-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.era-btn .y{font:600 13px var(--mono)}
+.era-btn .n{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.era-btn .s{font:600 12px var(--mono);color:var(--muted)}
+.era-btn[aria-selected="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.era-btn.fc[aria-selected="true"]{border-color:var(--fc);background:var(--fc-soft)}
+@media (max-width:760px){.eras{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* era detail */
+.detail{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px;display:grid;grid-template-columns:1.5fr 1fr;gap:28px}
+@media (max-width:760px){.detail{grid-template-columns:1fr;padding:18px}}
+.pill{display:inline-block;font:600 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent)}
+.pill.fc{background:var(--fc-soft);color:var(--fc)}
+.quote{font-family:var(--display);font-size:20px;font-weight:500;line-height:1.3}
+dl{margin:0;display:flex;flex-direction:column;gap:12px}
+dt{font:600 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+dd{margin:0}
+.big{font:700 44px/1 var(--display)}
+.big small{font-size:18px;color:var(--muted);font-weight:500}
+.bars{display:flex;flex-direction:column;gap:9px}
+.bar{display:grid;grid-template-columns:1fr 34px;gap:4px 10px;align-items:center;font-size:13px}
+.bar .lab{grid-column:1/-1;color:var(--muted)}
+.bar .track{height:8px;background:var(--band);border-radius:4px;overflow:hidden}
+.bar .fill{height:100%;border-radius:4px;background:var(--accent)}
+.bar .v{font:600 13px var(--mono);text-align:right}
+.lesson{border-top:1px solid var(--line);padding-top:12px;font-size:15px}
+/* lists */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+@media (max-width:760px){.two{grid-template-columns:1fr}}
+ol.play{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px}
+ol.play li::marker{font-family:var(--mono);color:var(--muted);font-size:13px}
+.meta-item{display:flex;flex-direction:column;gap:4px;padding:14px 0;border-top:1px solid var(--line)}
+.meta-item:first-child{border-top:0;padding-top:0}
+/* bet */
+.bet{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:26px;display:flex;flex-direction:column;gap:18px}
+.bet .head{font:700 26px/1.2 var(--display)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+.step{border-left:2px solid var(--accent);padding-left:12px;display:flex;flex-direction:column;gap:4px;font-size:15px}
+.step b{font:600 12px var(--mono);color:var(--accent)}
+.warn{border-left:2px solid var(--bad);padding-left:12px;font-size:15px}
+.roster{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 18px;font-size:14px}
+.roster div{padding:6px 0;border-bottom:1px solid var(--line)}
+.roster span{color:var(--muted);display:block;font-size:12px}
+ul.lim{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;color:var(--muted)}
+details summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:18px}
+details[open] summary{margin-bottom:14px}
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:600 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:no-preference){.detail{animation:fade .25s ease}@keyframes fade{from{opacity:.4}to{opacity:1}}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Multi-agent simulation · 16 agents · 9 eras · ~45 agent runs</span>
+    <h1>One startup, fifty years, one job: reinvent toward the frontier</h1>
+    <p class="lede">A 16-person AI org lived through 1990–2020 as training. In each era it decided using only what was knowable then, and a historian-judge then revealed what actually happened and scored the call. From 2026 it forecast without an answer key. Pick an era to see what the company became, what reality did, and what it learned. Run 001, September 2026.</p>
+  </header>
+
+  <section class="stack" aria-labelledby="traj">
+    <h2 id="traj">Score by era</h2>
+    <div class="chartbox" id="chartbox">
+      <svg id="chart" viewBox="0 0 960 260" role="img" aria-label="Era scores out of 100: 1990 55, 1996 52, 2002 58, 2008 66, 2014 68, 2020 61, 2026 56, 2032 57, 2040 58"></svg>
+      <div class="tip" id="tip" hidden></div>
+      <p class="chart-note">Training eras (1990–2020) were scored against real history. 2026 was scored against today's real market. 2032 and 2040 are scored against projected worlds and have no ground truth.</p>
+    </div>
+  </section>
+
+  <section class="stack" aria-labelledby="eraH">
+    <h2 id="eraH">What the company became in each era</h2>
+    <div class="eras" role="tablist" id="eras"></div>
+    <div class="detail" id="detail" role="tabpanel" aria-live="polite"></div>
+  </section>
+
+  <section class="two">
+    <div class="stack">
+      <h2>What 50 years of reinvention taught it</h2>
+      <div>
+        <div class="meta-item"><h3>It kept naming the frontier, then building the layer next to it</h3><p>Every era's memos found the real jump: the Web index in 1990, relevance in 1996, neural nets in 2008, scale in 2020. The board kept filtering by "what can our assets reach in 18 months" and landed one layer toward comfort. The result was nine companies that were useful and acquirable, and none that defined an era.</p></div>
+        <div class="meta-item"><h3>The dissent was right more often than the decision</h3><p>Dissents that asked "who holds the money or the loss?" or "who will absorb us?" were right almost every time. Dissents about a technology curve were right on the science and wrong on timing.</p></div>
+        <div class="meta-item"><h3>The best idea was deferred four times</h3><p>Pricing against the loss (guarantees, underwriting) was right in 2014, when Forter and Riskified won with it. The org deferred it in 2020, 2026 and 2032, took it in 2040 against eight or more rivals, and scored 58.</p></div>
+        <div class="meta-item"><h3>Value moves from recording to carrying the loss</h3><p>From 2014 to 2040 the through-line held: value moved from recording what systems did to carrying the loss when they fail.</p></div>
+      </div>
+    </div>
+    <div class="stack">
+      <h2>The Playbook, distilled</h2>
+      <ol class="play">
+        <li><b>Bridges expire</b> when the standards war ends. Put a date on your own death on day one.</li>
+        <li><b>The platform owner absorbs the tool</b>: free Analytics, first-party install ads, Cloud Vision, model-owner evals.</li>
+        <li><b>A referee is a franchise only if a third party mandates it.</b></li>
+        <li><b>Money pools where intent or loss is priced</b>, and it goes to whoever holds it.</li>
+        <li><b>A public curve pools value at its scarce inputs</b>: chips, labs, expert data.</li>
+        <li><b>Sell on the credit calendar</b>, not the product calendar. These were the best moves of the run.</li>
+        <li><b>Date your option against the incumbent's ship date.</b></li>
+        <li><b>Voluntary intent builds data moats</b>; hub-and-spoke networks don't.</li>
+        <li><b>Last era's road not taken is this era's crowded trade.</b></li>
+        <li><b>Stacked speculations multiply.</b> Fund the fallback as the base case.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="stack">
+    <h2>The org</h2>
+    <div class="roster" id="roster"></div>
+  </section>
+
+  <section class="stack">
+    <details>
+      <summary>Full trajectory table</summary>
+      <div class="table-wrap"><table id="tbl"><thead><tr><th>Era</th><th>Company</th><th>Identity</th><th>Score</th><th>Outcome</th></tr></thead><tbody></tbody></table></div>
+    </details>
+  </section>
+
+  <section class="stack">
+    <h2>Limits of this simulation</h2>
+    <ul class="lim">
+      <li>All 16 agents and both judges are the same language model, and it knows what happened in 1990–2020. Hindsight leakage was scored every era and was worst in 2008 (5/10) and 2020 (4/10).</li>
+      <li>The 2020 board meeting was written by the orchestrator while agent launches were down, so it had no independent Red Team.</li>
+      <li>The forecast eras are circular: the 2032 kill case became the 2040 world, and the 2040 board adopted it.</li>
+      <li>Revenues and exits are simulated distributions, not data.</li>
+    </ul>
+  </section>
+</div>
+
+<script>
+const ERAS=[
+ {y:"1990",n:"Switchyard Systems",fc:false,s:55,id:"We connect the islands: a multi-protocol mail and address gateway between incompatible networks.",
+  sub:[["Frontier accuracy",7],["Timing",5],["Layer choice",4],["Reinvention courage",6],["Hindsight leakage (10 = none)",7]],
+  kill:"Its own DOS TCP/IP stack, hardware, consumer service. Handwriting recognition shrunk to a 2-person option.",
+  real:"The real jump was the Web. Value went to the OS (Microsoft), routers (Cisco), access (UUNET, AOL), then the browser and the index (Netscape, Yahoo). The Frontier memo's \"own the index\" idea was dropped.",
+  out:"~60 sites and $3–6M revenue, then squeezed when Novell, Lotus and Microsoft bundled SMTP. Likely acquired for $15–40M.",
+  lesson:"Bridges expire when the standards war ends."},
+ {y:"1996",n:"Manifest Networks",fc:false,s:52,id:"A trusted, receipted exchange for business documents over the open Internet (Web-EDI).",
+  sub:[["Frontier accuracy",6],["Timing",6],["Layer choice",4],["Reinvention courage",6],["Hindsight leakage (10 = none)",7]],
+  kill:"Sold the gateway. Killed hosted mail and consumer checkout.",
+  real:"Search and paid listings (Google, Overture) priced intent. B2B exchanges boomed and busted. Its own relevance tripwire proved click data improves ranking in 1997, and was killed in 1998, the year Google launched.",
+  out:"Survived the crash as a ~$13M Web-EDI utility. IPO filed, then withdrawn.",
+  lesson:"Gate a tripwire on capability evidence, not on whether incumbents will pay."},
+ {y:"2002",n:"Ledgerline",fc:false,s:58,id:"The neutral, receipted ledger that proves which paid click became a sale, across every channel.",
+  sub:[["Frontier accuracy",6],["Timing",8],["Layer choice",4],["Reinvention courage",7],["Hindsight leakage (10 = none)",7]],
+  kill:"Web-EDI as the growth line (sold 2004), trade finance, hosted apps.",
+  real:"AdSense (2003) beat its contextual option. Google made Analytics free (2005). The comfort options it rejected, hosted filtering (Postini) and hosted apps (Salesforce), both became big outcomes.",
+  out:"A credible mid-tier bid-management vendor with ~$11M ARR, mostly agencies.",
+  lesson:"The auction owner absorbs the measurement."},
+ {y:"2008",n:"Clearline",fc:false,s:66,id:"A neutral clearing house that prices verified actions inside third-party apps.",
+  sub:[["Frontier accuracy",8],["Timing",7],["Layer choice",6],["Reinvention courage",9],["Hindsight leakage (10 = none)",5]],
+  kill:"Search bid management (sold at ~$41M, before Lehman).",
+  real:"The app economy was real. Facebook launched its own install ads in 2012. Mobile attribution (AppsFlyer, Adjust) became mandatory infrastructure.",
+  out:"~$18M net revenue. Margins compressed by first-party ads. Likely exit $100–250M.",
+  lesson:"If you can't own the auction, own the referee."},
+ {y:"2014",n:"Clearsight",fc:false,s:68,id:"Trained judgment for every app: a GPU-trained moderation and account-risk API.",
+  sub:[["Frontier accuracy",9],["Timing",8],["Layer choice",5],["Reinvention courage",8],["Hindsight leakage (10 = none)",6]],
+  kill:"The ad exchange (sold ~$115M). Sold its attribution referee too, the era's clearest own goal.",
+  real:"Deep learning was the right curve, but value pooled in chips, cloud and labeled data. Cloud Vision (2015) and Rekognition (2016) commoditized general APIs. Forter and Riskified won by guaranteeing losses.",
+  out:"A respected ~$22M ARR fraud and trust vendor with $150–400M of acquisition interest.",
+  lesson:"A public curve pools value at its scarce inputs. Price against the loss, not the labor."},
+ {y:"2020",n:"Clearproof",fc:false,s:61,id:"An outcome-graded proving ground for pretrained language models.",
+  sub:[["Frontier accuracy",8],["Timing",6],["Layer choice",5],["Reinvention courage",7],["Hindsight leakage (10 = none)",4]],
+  kill:"The classifier API as its identity. Stopped buying hardware.",
+  real:"GPT-3 arrived five months later and fired its tripwire almost exactly as written, which the judge scored as suspicious. After ChatGPT, value pooled in labs, compute, and expert data sold upstream (Surge, Scale, Mercor).",
+  out:"~$45M ARR evaluation vendor in the Braintrust and Galileo tier. Likely acquired for $0.4–1.2B.",
+  lesson:"When the curve is scale, sell scarce judgment upstream to whoever trains."},
+ {y:"2026",n:"Proofworks",fc:true,s:56,id:"Hard-to-fake, long-horizon environments built from real enterprise work, for training and certifying agents.",
+  sub:[["Playbook consistency",8],["Plausibility",6],["Non-consensus",3],["Layer choice",5],["Grounded (10 = no sci-fi)",8]],
+  kill:"Evaluation dashboards (put up for sale). Moderation harvested.",
+  real:"Live audit: this is the most crowded trade of 2026. There are 35–40+ environment vendors (Deeptune, Prime Intellect, Mechanize, plus Surge, Mercor and Scale), and labs are bringing the work in-house.",
+  out:"Forecast: $1–2B base case as a certification and trace-evidence vendor. ~35% confidence the bottleneck holds.",
+  lesson:"Last era's road not taken is this era's crowded trade."},
+ {y:"2032",n:"Clearwork",fc:true,s:57,id:"A neutral clearing house for delegated agent work: records the authority granted and settles what the work was worth.",
+  sub:[["Playbook consistency",8],["Plausibility",5],["Non-consensus",7],["Layer choice",5],["Grounded (10 = no sci-fi)",6]],
+  kill:"Certification as identity, the exposure registry, balance-sheet risk.",
+  real:"Projected: payment networks, labs and carriers half-absorb settlement. Five speculative premises have to hold together, about 10–15%.",
+  out:"Forecast: pivots to data and standards, ~$3–4B by 2039. Bull case is a DTCC-like utility after a correlated agent-loss event.",
+  lesson:"Clearing houses are built by the parties who move the money."},
+ {y:"2040",n:"Clearbond",fc:true,s:58,id:"A bonding house for agents that act without a human signature: it writes per-agent authority limits and takes the first loss.",
+  sub:[["Playbook consistency",9],["Plausibility",5],["Non-consensus",4],["Layer choice",7],["Grounded (10 = no sci-fi)",5]],
+  kill:"Settlement and escrow, and neutrality as identity. Finally holds risk, capped at 15% of cash.",
+  real:"Projected: the best layer choice in nine eras, but it arrives crowded, and model owners may warrant their own agents. The grader also wrote the world it relies on.",
+  out:"Forecast: $3–5B, likely bought by its co-owning carrier. ~11% chance the wedge works as designed.",
+  lesson:"An idea deferred four times arrives crowded."}
+];
+const ROSTER=[["Mira Castell","CEO & Founder"],["Dev Anand Rao","CTO"],["Dr. Lena Okafor","Chief Scientist"],["Tomas Weil","Chief Strategy Officer"],["Dr. Yuki Harada","Head of Frontier Research"],["Samuel Brandt","Technology Historian"],["Ines Varga","Futurist & Scenario Planner"],["Dr. Kofi Mensah","Research Scientist, Measurement"],["Priya Nair","VP Engineering"],["Jonah Reyes","Head of Product"],["Hana Kowalski","Principal Infrastructure Engineer"],["Leo Mbeki","Head of Developer Ecosystem"],["Carmen Ortiz","Head of Go-To-Market"],["Arjun Mehta","CFO & Capital Strategist"],["Dr. Elise Laurent","Chief Economist"],["Victor Hale","Red Team Lead"],["The Record","External historian-judge (1990–2020)"],["The Auditor","External forecast auditor (2026–2040)"]];
+
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const erasEl=document.getElementById('eras'), det=document.getElementById('detail');
+let cur=5;
+function render(i){
+  cur=i; const e=ERAS[i];
+  [...erasEl.children].forEach((b,k)=>b.setAttribute('aria-selected',k===i));
+  const cls=e.fc?'fc':'';
+  det.innerHTML=`<div class="stack">
+    <div><span class="pill ${cls}">${e.fc?(e.y==="2026"?'Live era · audited today':'Forecast · no ground truth'):'Training era · scored vs history'}</span></div>
+    <h3 style="font-size:26px">${esc(e.y)} · ${esc(e.n)}</h3>
+    <p class="quote">${esc(e.id)}</p>
+    <dl>
+      <div><dt>Killed or sold</dt><dd>${esc(e.kill)}</dd></div>
+      <div><dt>${e.fc?'What the judge found':'What actually happened'}</dt><dd>${esc(e.real)}</dd></div>
+      <div><dt>Simulated outcome</dt><dd>${esc(e.out)}</dd></div>
+    </dl>
+    <p class="lesson"><span class="eyebrow">Playbook lesson</span><br>${esc(e.lesson)}</p>
+  </div>
+  <div class="stack">
+    <div class="big">${e.s}<small> / 100</small></div>
+    <div class="bars">${e.sub.map(([l,v])=>`<div class="bar"><span class="lab">${esc(l)}</span><div class="track"><div class="fill" style="width:${v*10}%;${e.fc?'background:var(--fc)':''}"></div></div><span class="v">${v}</span></div>`).join('')}</div>
+  </div>`;
+  drawChart();
+}
+ERAS.forEach((e,i)=>{
+  const b=document.createElement('button');
+  b.className='era-btn'+(e.fc?' fc':''); b.setAttribute('role','tab'); b.id='era-'+e.y;
+  b.innerHTML=`<span class="y">${e.y}</span><span class="n">${esc(e.n)}</span><span class="s">${e.s}</span>`;
+  b.addEventListener('click',()=>render(i));
+  b.addEventListener('keydown',ev=>{if(ev.key==='ArrowRight'){render(Math.min(8,cur+1));erasEl.children[cur].focus()}if(ev.key==='ArrowLeft'){render(Math.max(0,cur-1));erasEl.children[cur].focus()}});
+  erasEl.appendChild(b);
+});
+document.getElementById('roster').innerHTML=ROSTER.map(([n,t])=>`<div>${esc(n)}<span>${esc(t)}</span></div>`).join('');
+document.querySelector('#tbl tbody').innerHTML=ERAS.map(e=>`<tr><td class="num">${e.y}</td><td>${esc(e.n)}</td><td>${esc(e.id)}</td><td class="num">${e.s}</td><td>${esc(e.out)}</td></tr>`).join('');
+
+function drawChart(){
+  const svg=document.getElementById('chart'), W=960,H=260,L=44,R=20,T=18,B=40;
+  const min=40,max=80, x=i=>L+i*(W-L-R)/8, y=v=>T+(max-v)*(H-T-B)/(max-min);
+  let s='';
+  const fcX=(x(5)+x(6))/2;
+  s+=`<rect x="${fcX}" y="${T}" width="${W-R-fcX}" height="${H-T-B}" fill="var(--fc-soft)"/>`;
+  s+=`<text x="${fcX+8}" y="${T+14}" fill="var(--fc)" font-family="var(--mono)" font-size="11" font-weight="600">LIVE + FORECAST</text>`;
+  s+=`<text x="${L+8}" y="${T+14}" fill="var(--muted)" font-family="var(--mono)" font-size="11" font-weight="600">TRAINING · SCORED VS HISTORY</text>`;
+  [40,50,60,70,80].forEach(v=>{s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" fill="var(--muted)" font-family="var(--mono)" font-size="11">${v}</text>`});
+  ERAS.forEach((e,i)=>{s+=`<text x="${x(i)}" y="${H-14}" text-anchor="middle" fill="var(--muted)" font-family="var(--mono)" font-size="11">${e.y}</text>`});
+  const pts=ERAS.map((e,i)=>`${x(i)},${y(e.s)}`);
+  s+=`<polyline points="${pts.slice(0,6).join(' ')}" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round"/>`;
+  s+=`<polyline points="${pts.slice(5).join(' ')}" fill="none" stroke="var(--fc)" stroke-width="2" stroke-dasharray="5 4" stroke-linejoin="round"/>`;
+  ERAS.forEach((e,i)=>{
+    const c=e.fc?'var(--fc)':'var(--accent)', sel=i===cur;
+    s+=`<circle cx="${x(i)}" cy="${y(e.s)}" r="${sel?7:5}" fill="${c}" stroke="var(--surface)" stroke-width="2"/>`;
+    if(sel||i===4) s+=`<text x="${x(i)}" y="${y(e.s)-13}" text-anchor="middle" fill="var(--ink)" font-family="var(--mono)" font-size="12" font-weight="600">${e.s}</text>`;
+    s+=`<rect data-i="${i}" x="${x(i)-40}" y="${T}" width="80" height="${H-T-B}" fill="transparent" style="cursor:pointer"/>`;
+  });
+  svg.innerHTML=s;
+  const tip=document.getElementById('tip'), box=document.getElementById('chartbox');
+  svg.querySelectorAll('rect[data-i]').forEach(r=>{
+    const i=+r.dataset.i, e=ERAS[i];
+    r.addEventListener('mouseenter',()=>{const bb=svg.getBoundingClientRect(),k=bb.width/W;tip.hidden=false;tip.innerHTML=`<b>${e.y} · ${esc(e.n)}</b><br>${e.s}/100 — ${esc(e.lesson)}`;tip.style.left=(x(i)*k+18)+'px';tip.style.top=(y(e.s)*k+18)+'px'});
+    r.addEventListener('mouseleave',()=>tip.hidden=true);
+    r.addEventListener('click',()=>render(i));
+  });
+}
+const h=(location.hash||'').slice(1); const hi=ERAS.findIndex(e=>'era'+e.y===h);
+render(hi>=0?hi:5);
+</script>
+
+</body>
+</html>
