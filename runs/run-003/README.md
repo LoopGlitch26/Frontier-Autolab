@@ -11,3 +11,11 @@ This did not use the Python API harness in `harness/`; it is not a multi-model r
 - **Export correction.** The live and forecast subscores in `scores.csv` were originally shifted one column to the left. They are now placed as playbook_consistency, plausibility, non_consensus, layer_choice, grounded, matching the E7–E9 reveals. Totals are unchanged.
 - **Era window.** The E6 reveal covers 2020–2025 rather than the protocol's Jan 2020 – Aug 2026 window.
 - **Protocol depth.** Era files are short decision and reveal summaries; no briefings, department memos or Red Team output were recorded.
+
+## Review note (29 Sep 2026)
+
+- **Probable exposure to Run 001.** This run was generated in the same workspace as Runs 002 and 004, where the repository's Run 001 records and findings were probably visible. Its company names differ, but treat it as conditioned on Run 001, not as an independent replication.
+- **Score aggregation.** Only E1–E2 totals equal the subscore sum × 2; the others were set by the judge. See `../../results/all_runs_scores.csv`.
+- **Export correction.** The live and forecast subscores in `scores.csv` were originally shifted one column to the left. They are now placed as playbook_consistency, plausibility, non_consensus, layer_choice, grounded, matching the E7–E9 reveals. Totals are unchanged.
+- **Era window.** The E6 reveal covers 2020–2025 rather than the protocol's Jan 2020 – Aug 2026 window.
+- **Protocol depth.** Era files are short decision and reveal summaries; no briefings, department memos or Red Team output were recorded.
