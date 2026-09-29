@@ -64,7 +64,7 @@ Information flow matters for the leakage question: from E2 on, each era's memos 
 | reinvention_courage | layer_choice |
 | hindsight_leakage (10 = none) | grounded (10 = no science fiction) |
 
-The total (0–100) is the judge's overall judgement, not a sum of the subscores. Because the two judges use different rubrics, training scores and live/forecast scores should not be averaged together or compared directly.
+In Run 001 the total (0–100) is the judge's overall judgement, not a sum of the subscores. Run 004 used the subscore sum × 2, and Runs 002–003 are mixed; [`results/all_runs_scores.csv`](../results/all_runs_scores.csv) gives both the published total and the recomputed sum × 2. Because the two judges use different rubrics, training scores and live/forecast scores should not be averaged together or compared directly.
 
 ## 6. Execution of run 001
 
@@ -79,6 +79,8 @@ The total (0–100) is the judge's overall judgement, not a sum of the subscores
 - Run 004 split department and Red Team work across persistent contexts. The root context wrote world briefings, board decisions, and Record/Auditor judgments. Each department context voiced multiple charter roles; the roles were not separate autonomous agents.
 - Run 004's mean scores were 66 across training eras E1–E6, 66 for the live E7 era, and 67 across forecasts E8–E9. The three modes use different rubrics; compare them only within mode. Scores are subjective judgments, not empirical outcome measurements.
 - The Python API harness in `../harness/` is a separate implementation and was not used to produce Runs 002–004.
+- Run 003's E6 reveal covers 2020–2025 rather than the protocol's Jan 2020 – Aug 2026 window.
+- Runs 002–004 were probably generated with Run 001's records visible; see [limitations-and-v2.md](limitations-and-v2.md).
 
 ## 8. Reporting conventions
 

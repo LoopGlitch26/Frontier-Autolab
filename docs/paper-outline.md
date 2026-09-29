@@ -44,3 +44,5 @@ We simulate a startup staffed by sixteen LLM personas that must reinvent itself 
 - [ ] Human ratings on a stratified sample, with agreement statistics.
 - [ ] Every quantitative claim in the paper traceable to a file in `runs/` or `results/`.
 - [ ] Pilot observations restated as hypotheses, and each one either supported or dropped.
+
+> Superseded by the full manuscript in [`../paper/`](../paper).

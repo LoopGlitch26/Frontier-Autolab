@@ -1,11 +1,11 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
-title: "Frontier Lab: an LLM-simulated startup scored against technology history"
+title: "Frontier Autolab: an LLM-simulated startup scored against technology history"
 type: software
 authors:
   - family-names: Ghosh
     given-names: Bravish
-repository-code: "https://github.com/LoopGlitch26/frontier-lab"
+repository-code: "https://github.com/LoopGlitch26/Frontier-Autolab"
 license: MIT
 date-released: 2026-09-29
 keywords:
@@ -14,3 +14,4 @@ keywords:
   - strategy
   - forecasting
   - hindsight bias
+  - LLM-as-a-judge

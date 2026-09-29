@@ -1,4 +1,4 @@
-# Frontier Lab
+# Frontier Autolab
 
 **An LLM-simulated startup reinvents itself across fifty years of technology history, is scored against what actually happened, and then forecasts.**
 
@@ -7,6 +7,8 @@ One simulated company, staffed by sixteen named role personas, lives through six
 **Research question:** can an agent organization learn strategy by being scored against history, and does hindsight leakage make that scoring meaningless?
 
 > **Status: exploratory, four qualitative trajectories; no controlled replication.** Run 001 used the original sub-agent orchestration, with a human operator writing one board decision (E6). Runs 002 and 003 used a separate, manually orchestrated harness that follows the same era prompts; one model generated the role perspectives, board decisions, and judging in each run. Run 004 used separate contexts for three departments and the Red Team, while the root context wrote briefings, board decisions, and judgments. No run tested the controlled design in [the experiment plan](limitations-and-v2.md).
+
+> **Review corrections (29 Sep 2026).** Score aggregation differs by run (Run 001 holistic; Run 004 subscore sum × 2; Runs 002–003 mixed), so compare runs with the recomputed column in [`results/all_runs_scores.csv`](../results/all_runs_scores.csv). The live/forecast subscores of Runs 002 and 003 were exported one column off and are now corrected. Runs 002–004 were probably generated with Run 001's records visible (Run 002 reuses Run 001's company names for E1–E4), so they are not independent replications. A paper describing the pilot study is in [`paper/`](../paper).
 
 ## Run 001 at a glance
 
@@ -24,7 +26,7 @@ One simulated company, staffed by sixteen named role personas, lives through six
 
 † E6's board decision was written by the operator, not the agents ([run notes](run-001-notes.md)).
 
-Training mean 60 (E1–E6). Live 56 (E7). Forecast mean 57.5 (E8–E9). Training, live and forecast scores use different rubrics and different judges, so they are not directly comparable. Scores are 0–100 overall judgements by the judge, not sums of subscores. Subscores are in [`results/scores.csv`](../results/scores.csv); an interactive view is in [`results/results_page.html`](../results/results_page.html).
+Training mean 60 (E1–E6). Live 56 (E7). Forecast mean 57.5 (E8–E9). Training, live and forecast scores use different rubrics and different judges, so they are not directly comparable. Run 001 totals are 0–100 overall judgements by the judge, not sums of subscores; other runs used different aggregation rules (see [`results/all_runs_scores.csv`](../results/all_runs_scores.csv)). Subscores are in [`results/scores.csv`](../results/scores.csv); an interactive view is in [`results/results_page.html`](../results/results_page.html).
 
 Runs 002 and 003 are separate qualitative trajectories using the alternate manual harness. Run 004 is a multi-context role simulation. Their records and score exports are available in [`runs/run-002`](../runs/run-002), [`runs/run-003`](../runs/run-003), [`runs/run-004`](../runs/run-004), and the [interactive results page](../results/results_page.html). The Python API harness in `../harness/` was not used to generate these trajectories.
 
