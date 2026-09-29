@@ -1,10 +1,10 @@
-era,mode,company,total,frontier_accuracy,timing,layer_choice,reinvention_courage,hindsight_leakage,playbook_consistency,plausibility,non_consensus,grounded
-E1,training,Porthole Networks,60,7,6,5,6,6,,,,
-E2,training,PageSignal,58,6,7,4,6,6,,,,
-E3,training,Clinisphere,63,7,7,6,7,5,,,,
-E4,training,ClaimGraph,65,8,7,6,8,5,,,,
-E5,training,BenefitFlow,61,6,6,5,7,5,,,,
-E6,training,LineSight,68,8,7,7,7,4,,,,
-E7,live,FlowCheck,64,,,,,8,6,6,7,7
-E8,forecast,WorkPermit,59,,,,,7,6,5,6,6
-E9,forecast,Delegation Warranty,55,,,,,7,5,5,5,5
+era,mode,company,frontier_accuracy,timing,layer_choice,reinvention_courage,hindsight_leakage,playbook_consistency,plausibility,non_consensus,grounded,total
+E1,training,Porthole Networks,7,6,5,6,6,,,,,60
+E2,training,PageSignal,6,7,4,6,6,,,,,58
+E3,training,Clinisphere,7,7,6,7,5,,,,,63
+E4,training,ClaimGraph,8,7,6,8,5,,,,,65
+E5,training,BenefitFlow,6,6,5,7,5,,,,,61
+E6,training,LineSight,8,7,7,7,4,,,,,68
+E7,live,FlowCheck,,,7,,,8,6,6,7,64
+E8,forecast,WorkPermit,,,6,,,7,6,5,6,59
+E9,forecast,Delegation Warranty,,,5,,,7,5,5,5,55
