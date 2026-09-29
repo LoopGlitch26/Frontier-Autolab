@@ -1,0 +1,37 @@
+run,era,year,mode,company,reported_total,subscore_sum_x2,reported_minus_sum_x2,frontier_accuracy,timing,layer_choice,reinvention_courage,hindsight_leakage,playbook_consistency,plausibility,non_consensus,grounded,aggregation_rule
+run-001,E1,1990,training,Switchyard Systems,55,58,-3,7,5,4,6,7,,,,,holistic (judge overall judgement)
+run-001,E2,1996,training,Manifest Networks,52,58,-6,6,6,4,6,7,,,,,holistic (judge overall judgement)
+run-001,E3,2002,training,Ledgerline,58,64,-6,6,8,4,7,7,,,,,holistic (judge overall judgement)
+run-001,E4,2008,training,Clearline,66,70,-4,8,7,6,9,5,,,,,holistic (judge overall judgement)
+run-001,E5,2014,training,Clearsight,68,72,-4,9,8,5,8,6,,,,,holistic (judge overall judgement)
+run-001,E6,2020,training,Clearproof,61,60,1,8,6,5,7,4,,,,,holistic (judge overall judgement)
+run-001,E7,2026,live,Proofworks,56,60,-4,,,5,,,8,6,3,8,holistic (judge overall judgement)
+run-001,E8,2032,forecast,Clearwork,57,62,-5,,,5,,,8,5,7,6,holistic (judge overall judgement)
+run-001,E9,2040,forecast,Clearbond,58,60,-2,,,7,,,9,5,4,5,holistic (judge overall judgement)
+run-002,E1,1990,training,Switchyard,62,62,0,7,6,5,7,6,,,,,mostly sum_x2; E6 deviates
+run-002,E2,1996,training,Manifest,66,66,0,7,7,6,7,6,,,,,mostly sum_x2; E6 deviates
+run-002,E3,2002,training,Ledgerline,60,60,0,8,6,5,6,5,,,,,mostly sum_x2; E6 deviates
+run-002,E4,2008,training,Clearline,66,66,0,8,7,6,7,5,,,,,mostly sum_x2; E6 deviates
+run-002,E5,2014,training,Vectorial,64,64,0,8,6,6,7,5,,,,,mostly sum_x2; E6 deviates
+run-002,E6,2020,training,Proofline,72,68,4,9,7,7,7,4,,,,,mostly sum_x2; E6 deviates
+run-002,E7,2026,live,Tracewell,66,66,0,,,6,,,7,7,5,8,mostly sum_x2; E6 deviates
+run-002,E8,2032,forecast,Consequence,62,62,0,,,5,,,7,6,6,7,mostly sum_x2; E6 deviates
+run-002,E9,2040,forecast,Recourse,60,60,0,,,5,,,7,5,7,6,mostly sum_x2; E6 deviates
+run-003,E1,1990,training,Porthole Networks,60,60,0,7,6,5,6,6,,,,,"mixed; only E1-E2 match sum_x2"
+run-003,E2,1996,training,PageSignal,58,58,0,6,7,4,6,6,,,,,"mixed; only E1-E2 match sum_x2"
+run-003,E3,2002,training,Clinisphere,63,64,-1,7,7,6,7,5,,,,,"mixed; only E1-E2 match sum_x2"
+run-003,E4,2008,training,ClaimGraph,65,68,-3,8,7,6,8,5,,,,,"mixed; only E1-E2 match sum_x2"
+run-003,E5,2014,training,BenefitFlow,61,58,3,6,6,5,7,5,,,,,"mixed; only E1-E2 match sum_x2"
+run-003,E6,2020,training,LineSight,68,66,2,8,7,7,7,4,,,,,"mixed; only E1-E2 match sum_x2"
+run-003,E7,2026,live,FlowCheck,64,68,-4,,,7,,,8,6,6,7,"mixed; only E1-E2 match sum_x2"
+run-003,E8,2032,forecast,WorkPermit,59,60,-1,,,6,,,7,6,5,6,"mixed; only E1-E2 match sum_x2"
+run-003,E9,2040,forecast,Delegation Warranty,55,54,1,,,5,,,7,5,5,5,"mixed; only E1-E2 match sum_x2"
+run-004,E1,1990,training,Switchyard Systems,60,60,0,6,6,5,5,8,,,,,sum_x2 (documented)
+run-004,E2,1996,training,Switchyard Systems,62,62,0,6,6,5,6,8,,,,,sum_x2 (documented)
+run-004,E3,2002,training,Switchyard Commerce Operations,62,62,0,6,6,5,7,7,,,,,sum_x2 (documented)
+run-004,E4,2008,training,Switchyard Commerce Operations,70,70,0,7,7,6,8,7,,,,,sum_x2 (documented)
+run-004,E5,2014,training,Switchyard Evidence Operations,70,70,0,8,7,6,8,6,,,,,sum_x2 (documented)
+run-004,E6,2020,training,Switchyard Evidence Operations,72,72,0,8,7,6,7,8,,,,,sum_x2 (documented)
+run-004,E7,2026,live,Caseground,66,66,0,,,6,,,8,6,5,8,sum_x2 (documented)
+run-004,E8,2032,forecast,Caseground,68,68,0,,,6,,,9,6,5,8,sum_x2 (documented)
+run-004,E9,2040,forecast,Caseground,66,66,0,,,6,,,9,5,5,8,sum_x2 (documented)
