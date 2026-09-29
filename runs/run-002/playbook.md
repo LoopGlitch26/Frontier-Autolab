@@ -1,11 +1,11 @@
 # Playbook — run 002
 
-- [E1] Sell the operator a reliability improvement that is measurable this quarter; adapters are a wedge, not a long-run moat.
-- [E2] Charge for continuity and actionable alerts, not raw telemetry that hardware vendors can bundle.
-- [E3] In regulated workflows, implementation and data rights often matter more than feature breadth; keep deployment narrow until outcomes repeat.
-- [E4] Digitizing evidence does not create a network by itself. Attach to a payer's adjudication workflow and preserve a defensible chain of custody.
-- [E5] Pick one administrative outcome and buyer; broad “identity infrastructure” risks becoming a feature of larger systems.
-- [E6] Model quality is conditional on the operating environment. Label failures, test changes against real costs, and keep a human fallback.
-- [E7-forecast] Agent governance and evaluation are being built into platforms. Sell a measured business control or acceptance decision, not another generic dashboard.
-- [E8-forecast] Delegated authority has value only when a buyer needs an external policy boundary; start with narrow, reversible permissions and named owners.
-- [E9-forecast] Recourse follows enforceable contracts, calibrated loss data, and capital. Software evidence alone does not create an insurable risk pool.
+- [E1] A gateway earns adoption while protocols are unsettled, but standardization destroys tolls. Make interoperability portable and own the migration tool, not the permanent bridge.
+- [E2] A workflow product can monetize reliability before a universal network exists; avoid subsidizing both sides of a marketplace before one side has repeat volume.
+- [E3] In a new distribution channel, attribution is valuable but platforms can bundle measurement. Anchor to a budget owner and a decision the platform will not neutrally grade.
+- [E4] When adoption shifts to mobile, own the consented event and policy boundary. Do not mistake cross-platform neutrality for durable leverage where platforms control access.
+- [E5] General prediction APIs are vulnerable to cloud bundling. Sell a measurable decision outcome and retain domain feedback rights.
+- [E6] Evaluate deployed behavior on consequential workflows, not benchmark scores alone; data permission, reproducible tests, and change control can outlast a model cycle.
+- [E7-forecast] Trace capture and evaluation are rapidly bundling into model, cloud, and observability platforms. Differentiate on portable evidence and rights, but validate willingness to pay before building a category.
+- [E8-forecast] Settlement and standards accrue value only after repeated cross-vendor transactions; begin with a narrow workflow and a named liability owner.
+- [E9-forecast] A guarantee is an insurance business with capital, regulation, and adverse selection. Price a bounded exposure from verified outcomes before assuming a software company can own the loss.

@@ -2,36 +2,52 @@
 
 ## Results
 
-| Era | Company | Decision | Score |
+| Era | Company | Thesis | Score |
 |---|---|---|---:|
-| 1990 | Porthole Networks | diagnostics and adapters for mixed office networks | 60 |
-| 1996 | PageSignal | uptime monitoring and actionable alerts for early web operators | 58 |
-| 2002 | Clinisphere | hosted scheduling and eligibility workflow for independent clinics | 63 |
-| 2008 | ClaimGraph | provenance and reconciliation for digital claims evidence | 65 |
-| 2014 | BenefitFlow | secure mobile benefits enrollment and document verification | 61 |
-| 2020 | LineSight | deployment-specific evaluation and drift control for industrial vision | 68 |
-| 2026 | FlowCheck | acceptance tests and human approval gates for one AI-assisted workflow | 64 |
-| 2032 | WorkPermit | scoped, revocable authority for delegated software work | 59 |
-| 2040 | Delegation Warranty | bounded recourse for one class of delegated transaction | 55 |
+| 1990 | Switchyard | Normalize and receipt email across incompatible networks | 62 |
+| 1996 | Manifest | Reliable, auditable EDI bridge for small suppliers | 66 |
+| 2002 | Ledgerline | Reconcile campaign events into decision-grade attribution | 60 |
+| 2008 | Clearline | Permissioned mobile event exchange for fraud and measurement | 66 |
+| 2014 | Vectorial | Narrow risk decisions from learned representations, with outcome feedback | 64 |
+| 2020 | Proofline | Regression and outcome evaluation for language-model workflows | 72 |
+| Sep 2026 | Tracewell | Rights-bearing workflow traces and independent reliability evidence | 66 |
+| 2032 | Consequence | Acceptance records for delegated work, beginning with one regulated workflow | 62 |
+| 2040 | Recourse | Bounded, priced recourse for delegated actions | 60 |
 
-Training mean: **62.5/100**. Forecast mean (E8–E9): **57.0/100**. E7 live score: **64/100**. The historical and forecast rubrics differ. These scores are one model’s subjective judgments, not measurements. See `scores.csv` and the per-era decision/reveal notes.
+Training average: **65.0/100**. Forecast average (E8–E9): **61.0/100**. The training scores incorporate a hindsight penalty; they are not comparable to the forecast rubric as if they shared an answer key. E7 live score is 66. Subscores are in `scores.csv`.
 
-## Interpretation
+## Era findings (historical calls are ex-post judgments)
 
-Across the historical eras, the org generally chose a buildable wedge and then pivoted toward a richer workflow, but repeatedly left the primary economic decision to a payer or platform. Its most coherent decision is E6: local model validation tied to inspection costs rather than generic AI accuracy. E2 has the weakest layer choice; the monitoring utility is easy to bundle and does not own the operator’s remediation budget.
+**E1 — Switchyard (62).** The 1990 call is a gateway with delivery receipts and address normalization for organizations that must exchange mail across incompatible systems. The real internet and email ecosystem grew through open protocols; durable value migrated toward connectivity, software, and later web navigation. This is useful but commoditizable. A small gateway could plausibly sell to an incumbent, but protocol neutrality alone is not a moat.
 
-E7’s evidence supports a real reliability and governance problem, but not a neutral vendor’s inevitability. IBM Research reports production agents often use short, human-supervised runs and rely heavily on human evaluation; Microsoft describes governance, CI/CD, approvals, and observability as maturity capabilities. These are evidence of a practical deployment gap and platform investment, not proof that a startup will capture the layer. [IBM Research, Characterizing Agents in Production](https://research.ibm.com/publications/characterizing-agents-in-production), [Microsoft Learn, Agentic AI maturity model](https://learn.microsoft.com/en-us/agents/adoption-maturity-model/maturity-model-technology). Scale’s READY framework and Gartner’s 2026 reliability research also show that workflow qualification is an active and competitive category. [Scale Labs, READY](https://labs.scale.com/papers/reliable-enterprise-agent-deployment), [Gartner, From Demo to Production](https://www.gartner.com/en/documents/7832217).
+**E2 — Manifest (66).** Build a receipted EDI service for suppliers that cannot afford expensive enterprise integration. Electronic commerce and the web expand, but standards and large platforms reduce the value of a generic exchange. The wedge has a concrete buyer and measurable failure cost; hub economics remain the key risk.
 
-**FACT (as of Sep 2026):** Enterprise systems and vendors are investing in agent governance, reliability evaluation, and controlled execution. **EXTRAPOLATION (medium confidence):** Buyers will pay for controls that demonstrably reduce review effort or incident cost in a named workflow. **SPECULATION (low confidence):** Cross-vendor delegated authority or insurance standards will become a distinct market by 2032–2040.
+**E3 — Ledgerline (60).** Build auditable campaign conversion reconciliation across emerging online channels. Search advertising and web analytics become central, with platform-owned measurement taking much of the value. The call recognizes the data problem but chooses an exposed measurement layer instead of owning the budget decision or distribution.
 
-FlowCheck’s wedge is a claims operations team: replay a fixed set of claims tasks, measure correct completion and escalation, and gate a narrow write action on human approval. It should sell a measurable reduction in rework, not promise broad agent safety. Kill if two production buyers cannot provide permissioned test cases or if platform-native controls meet their acceptance needs. Strong incumbents include cloud and enterprise control planes, specialist evaluation companies, and workflow automation vendors.
+**E4 — Clearline (66).** Shift from web measurement to mobile app events, consent records, and fraud controls. Smartphones and app stores reset distribution, while platform rules constrain neutral intermediaries. Timing and reinvention are good; neutrality is brittle when access is granted by the platforms being measured.
 
-The 2032 forecast assumes enterprises need scoped delegation records across tools; it also assumes identity and orchestration providers do not fully absorb the control. WorkPermit should remain a policy adapter until a buyer mandates an independent authority record. Delegation Warranty in 2040 is the least certain thesis: liability could stay with vendors and customers, be handled by existing E&O products, or remain too data-poor to price.
+**E5 — Vectorial (64).** Use the deep-learning cost/performance shift for one high-cost decision such as fraud or account risk, charging for verified outcomes and retaining feedback rights. The technical curve was real; cloud APIs and platform bundling put pressure on generic prediction vendors. A narrow workflow is more defensible than a general model API, but competitive timing is uncertain.
+
+**E6 — Proofline (72).** Evaluate language models on real enterprise task outcomes, regression tests, and auditable changes. This identifies a real early bottleneck, but 2020 adoption and budgets are nascent. The hindsight leakage score is low (4/10) because this call is unusually close to the later category and its wording risks importing later framing. The direction was perceptive; the degree of foresight is not separable from model hindsight here.
+
+## E7: live September 2026 assessment
+
+**FACT.** Enterprise agent stacks already include observability, governance, and evaluation offerings from major cloud/software vendors and specialist platforms. AWS describes production agent architectures with observability and governance; Microsoft documents agent identity/observability; Google Cloud documents tool-use tracing. LangChain reports broad adoption of agent observability among its survey respondents. These sources establish active investment, not independent proof of broad production value. [AWS guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/govern-architect-agentic-ai/enterprise-architecture.html), [Microsoft Agent 365](https://learn.microsoft.com/en-us/microsoft-agent-365/admin/data-residency-protection-compliance), [Google Cloud Observability](https://docs.cloud.google.com/stackdriver/docs/observability/agent-observability), [LangChain State of Agent Engineering](https://www.langchain.com/state-of-agent-engineering).
+
+**EXTRAPOLATION (medium confidence).** As agents gain write permissions, buyers will need replayable evidence of what was seen, authorized, and changed, plus task-level reliability evidence. Evaluation and tracing will continue to bundle into model platforms and enterprise clouds.
+
+**SPECULATION (low-to-medium confidence).** A neutral vendor can sell portable evidence and outcome-linked evaluation if customers have multi-vendor deployments and auditors or insurers accept its records. Tracewell starts with one high-cost workflow and sells signed trace capture, replay, and regression gates to a regulated operations team. It avoids underwriting losses at the outset. Strong incumbents and lack of rights to production traces are the kill case. Score 66: grounded bottleneck, crowded layer, uncertain neutral distribution.
+
+## Forecasts
+
+**2032 — Consequence (62).** Base case: agents are common in bounded workflows; enterprise platforms capture orchestration, identity, and telemetry. A narrow cross-vendor acceptance record may help procurement or disputes, but network effects are not assumed. A 2032 world that simply adopts this company’s thesis would be circular; this forecast instead includes bundling and continued human approval as counterforces.
+
+**2040 — Recourse (60).** If delegated systems can initiate consequential actions, buyers may demand enforceable authority boundaries and recourse. The first product is a contract and evidence service for a narrow class of transactions, partnered with licensed carriers rather than assuming a software startup can carry risk. Speculative: broad agent insurance markets, standardized liability, and autonomous contracting. Failure modes include regulation, low loss frequency, self-insurance, and platform-controlled warranties.
 
 ## Playbook and meta-lesson
 
-The recurring lesson is to identify the budget-bearing workflow before choosing an infrastructure layer. Technical instrumentation is necessary but rarely sufficient. When the product affects decisions, permissions, or risk, evidence should connect to a named owner and a measurable economic consequence. Data rights, implementation constraints, and distribution are more durable filters than an abstract “neutral layer.”
+The repeated pattern is that a capability jump creates an adoption problem, but the proposed company tends to choose an instrumented layer adjacent to the eventual budget or loss holder. That is both the source of practical wedges and the recurring limit on upside. Bridges and measurement tools are vulnerable to standardization and bundling. Evidence becomes a business only when attached to a decision, buyer, or mandate. The most promising pivot is from measuring model quality to proving a workflow outcome; the most dangerous extrapolation is that evidence naturally becomes a clearinghouse or guarantee.
 
-## Limits
+## Limitations
 
-This is a qualitative, single-model run made directly in ChatGPT. Department voices and judge are not independent. Historical facts were recalled rather than audited era-by-era, so hindsight leakage is imperfectly measured. There are no API call logs, repeated seeds, ablations, second judge, or human raters. Financing and outcomes are illustrative. Forecasts have no answer key; E8 and E9 are conditional scenarios, not predictions with calibrated probabilities. This run cannot establish that an organization learned from the Playbook.
+This is a single-model run, with no separate department models, API logs, human raters, ablations, or repeated seeds. Role transcripts were not independently elicited. Historical facts were recalled rather than sourced era-by-era, so the anti-hindsight scores are subjective and cannot demonstrate leakage control. Simulated financing and outcomes are illustrative. The run is not the controlled experiment specified in `docs/limitations-and-v2.md`; it is a qualitative run. Forecast scores have no answer key.
