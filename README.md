@@ -28,22 +28,6 @@ Training average 60; forecast average 57.5. Subscores are in [`results/scores.cs
 
 | Era | Mode | Company | The call | Score |
 |---|---|---|---|---:|
-| 1990 | training | Porthole Networks | Mixed-network diagnostics | 60 |
-| 1996 | training | PageSignal | Web uptime monitoring | 58 |
-| 2002 | training | Clinisphere | Hosted clinic workflow | 63 |
-| 2008 | training | ClaimGraph | Verified digital claims evidence | 65 |
-| 2014 | training | BenefitFlow | Mobile benefits enrollment | 61 |
-| 2020 | training | LineSight | Industrial vision validation | 68 |
-| 2026 | live | FlowCheck | Acceptance tests for an AI claims workflow | 64 |
-| 2032 | forecast | WorkPermit | Scoped authority for delegated tasks | 59 |
-| 2040 | forecast | Delegation Warranty | Capped recourse for a narrow delegated transaction | 55 |
-
-Training average 62.5; forecast average 57. This is a one-model qualitative run; its complete caveats and era records are in [`runs/run-002`](runs/run-002), with scores at [`results/run-002-scores.csv`](results/run-002-scores.csv).
-
-## Run 003 at a glance
-
-| Era | Mode | Company | The call | Score |
-|---|---|---|---|---:|
 | 1990 | training | Switchyard | Mail and address gateway between incompatible networks | 62 |
 | 1996 | training | Manifest | Receipted Web-EDI exchange | 66 |
 | 2002 | training | Ledgerline | Neutral cross-channel conversion ledger | 60 |
@@ -54,7 +38,23 @@ Training average 62.5; forecast average 57. This is a one-model qualitative run;
 | 2032 | forecast | Consequence | Acceptance records for delegated work | 62 |
 | 2040 | forecast | Recourse | Bounded recourse for delegated actions | 60 |
 
-Training average 65; forecast average 61. Details are in [`runs/run-003`](runs/run-003), and scores are in [`results/run-003-scores.csv`](results/run-003-scores.csv).
+Training average 65; forecast average 61. Details are in [`runs/run-002`](runs/run-002), and scores are in [`results/run-002-scores.csv`](results/run-002-scores.csv).
+
+## Run 003 at a glance
+
+| Era | Mode | Company | The call | Score |
+|---|---|---|---|---:|
+| 1990 | training | Porthole Networks | Mixed-network diagnostics | 60 |
+| 1996 | training | PageSignal | Web uptime monitoring | 58 |
+| 2002 | training | Clinisphere | Hosted clinic workflow | 63 |
+| 2008 | training | ClaimGraph | Verified digital claims evidence | 65 |
+| 2014 | training | BenefitFlow | Mobile benefits enrollment | 61 |
+| 2020 | training | LineSight | Industrial vision validation | 68 |
+| 2026 | live | FlowCheck | Acceptance tests for an AI claims workflow | 64 |
+| 2032 | forecast | WorkPermit | Scoped authority for delegated tasks | 59 |
+| 2040 | forecast | Delegation Warranty | Capped recourse for a narrow delegated transaction | 55 |
+
+Training average 62.5; forecast average 57. Details are in [`runs/run-003`](runs/run-003), and scores are in [`results/run-003-scores.csv`](results/run-003-scores.csv).
 
 Runs 002 and 003 used the same separate, manually orchestrated harness. This is role simulation by one model, not an independent-agent run, controlled ablation, or evidence that the Playbook improves performance. The Python API harness in `harness/` was not used for either run.
 
