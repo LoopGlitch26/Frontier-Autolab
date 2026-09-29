@@ -6,7 +6,7 @@ Sixteen LLM agents with named roles run one company. It lives through 1990–202
 
 The research question: **can an agent organization learn strategy by being scored against history, and does hindsight leakage make that scoring meaningless?**
 
-> Status: exploratory. `runs/run-001` is one harness run; `runs/v2-chatgpt` is a separate ChatGPT-generated qualitative pilot, not a controlled replication. Treat both as hypotheses for the experiments described in [docs/limitations-and-v2.md](docs/limitations-and-v2.md).
+> Status: exploratory. `runs/run-001` is one harness run; `runs/v2` is a separate qualitative pilot, not a controlled replication. Treat both as hypotheses for the experiments described in [docs/limitations-and-v2.md](docs/limitations-and-v2.md).
 
 ## Run 001 at a glance
 
@@ -24,9 +24,9 @@ The research question: **can an agent organization learn strategy by being score
 
 Training average 60, forecast average 57. Subscores are in [`results/scores.csv`](results/scores.csv), and an interactive view is in [`results/results_page.html`](results/results_page.html).
 
-## ChatGPT pilot (2026-09-29)
+## v2 pilot (2026-09-29)
 
-A fresh qualitative run used ChatGPT directly rather than the Anthropic-only harness. It scored 62, 66, 60, 66, 64, 72, 66, 62, 60 across E1–E9 (training average 65; forecast average 61). Its artifacts and caveats are in [`runs/v2-chatgpt`](runs/v2-chatgpt), with a separate score export at [`results/v2-chatgpt-scores.csv`](results/v2-chatgpt-scores.csv). This one-model role-play is not an independent-agent run, controlled ablation, or evidence that the Playbook improves performance.
+A fresh qualitative run scored 62, 66, 60, 66, 64, 72, 66, 62, 60 across E1–E9 (training average 65; forecast average 61). Its artifacts and caveats are in [`runs/v2`](runs/v2), with a separate score export at [`results/v2-scores.csv`](results/v2-scores.csv). This one-model role-play is not an independent-agent run, controlled ablation, or evidence that the Playbook improves performance.
 
 **Main observations (from one run: hypotheses, not findings)**
 
@@ -63,7 +63,7 @@ runs/run-001/       every briefing, memo, board decision and reveal from run 001
   company_state.md  identities, capital and outcomes across eras
   roster.md         how the org restructured itself
   final_synthesis.md
-results/            run-001 and ChatGPT pilot score exports, results_page.html
+results/            run-001 and v2 pilot score exports, results_page.html
 docs/               methodology, run notes, limitations and v2 plan
 ```
 

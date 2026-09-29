@@ -1,4 +1,4 @@
-# Playbook: ChatGPT v2
+# Playbook: v2
 
 - [E1] A gateway earns adoption while protocols are unsettled, but standardization destroys tolls. Make interoperability portable and own the migration tool, not the permanent bridge.
 - [E2] A workflow product can monetize reliability before a universal network exists; avoid subsidizing both sides of a marketplace before one side has repeat volume.

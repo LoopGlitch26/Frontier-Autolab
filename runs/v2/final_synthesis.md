@@ -1,4 +1,4 @@
-# Frontier Lab v2: ChatGPT run (1990–2040)
+# Frontier Lab v2 run (1990–2040)
 
 ## Results
 
@@ -50,4 +50,4 @@ The repeated pattern is that a capability jump creates an adoption problem, but 
 
 ## Limitations
 
-This is one ChatGPT-generated run, with no separate department models, API logs, human raters, ablations, or repeated seeds. Role transcripts were not independently elicited. Historical facts were recalled rather than sourced era-by-era, so the anti-hindsight scores are subjective and cannot demonstrate leakage control. Simulated financing and outcomes are illustrative. The run is not the controlled v2 experiment specified in `docs/limitations-and-v2.md`; it is a qualitative pilot. Forecast scores have no answer key.
+This is a single-model run, with no separate department models, API logs, human raters, ablations, or repeated seeds. Role transcripts were not independently elicited. Historical facts were recalled rather than sourced era-by-era, so the anti-hindsight scores are subjective and cannot demonstrate leakage control. Simulated financing and outcomes are illustrative. The run is not the controlled v2 experiment specified in `docs/limitations-and-v2.md`; it is a qualitative pilot. Forecast scores have no answer key.
