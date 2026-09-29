@@ -1,0 +1,5 @@
+# E7 board decision — Sep 2026
+
+**FlowCheck** provides acceptance tests and approval gates for one AI-assisted claims workflow. **FACT:** enterprise agents and control planes are actively being deployed; reliability, evaluation, identity, and governance have established vendor attention. **EXTRAPOLATION (medium):** buyers will pay for auditable proof that a workflow meets a target error and review rate. **SPECULATION (low):** an independent vendor can remain neutral as cloud and workflow platforms bundle controls.
+
+First product: permissioned replay and scored acceptance suite for claims intake, with human approval before write actions. First buyer: an insurer’s claims operations leader. $10M planned capital. Kill if no buyer grants test data and budget, or platform-native gates meet acceptance needs. Keep exception labels and cost baselines; stop selling generic model evaluation. Product wants to build a broad agent console; Red Team warns that the space is crowded. CEO keeps the product narrow and prices against reduced rework.
