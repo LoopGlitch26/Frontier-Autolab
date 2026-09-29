@@ -23,7 +23,7 @@
 \newcommand{\sys}{\textsc{Frontier Autolab}}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
-\title{Scored Against History: A Pilot Study of Hindsight Leakage and Strategic Learning in an LLM-Simulated Organization}
+\title{Frontier Autolab: Organizational Memory, Dissent and Hindsight in LLM Agent Firms Across Fifty Years of Technological Change}
 \author{Bravish Ghosh\\
 \small Independent researcher\\
 \small \url{https://github.com/LoopGlitch26/Frontier-Autolab}}
@@ -33,27 +33,27 @@
 \maketitle
 
 \begin{abstract}
-History is an attractive answer key for evaluating strategic reasoning: a decision made with information available in 1996 can be scored against what actually happened afterwards. Large language models (LLMs) make this answer key leaky, because they already know the history. We introduce \sys{}, an open protocol in which a simulated startup, voiced by sixteen LLM role personas, must reinvent itself across nine technology eras from 1990 to 2040. In six \emph{training} eras (1990--2020) the organization decides using only dated information; an LLM historian-judge then reveals what happened, scores the call on five dimensions, and appends lessons to a Playbook that carries forward. In one live era (September 2026) and two forecast eras (2032, 2040) there is no answer key. We report four exploratory trajectories (36 era decisions, 180 subscores) produced under three orchestration schemes. In all four, training-era scores rise across eras ($+1.4$ to $+2.6$ points per era) while the judge's own hindsight-leakage subscore worsens in the same eras (per-run Pearson $r$ between total and hindsight subscore from $-0.38$ to $-0.92$, $n=6$ each), so apparent learning cannot be separated from recall. Layer choice is the lowest-scoring dimension in every run, consistent with a qualitative pattern in which the organization named the coming capability shift but chose an adjacent, asset-reachable layer. We also document measurement failures that any ``learn from history'' agent benchmark should expect: inconsistent score aggregation, a column-shift error in exported scores, probable cross-run contamination, briefing-selection leakage, and a rubric that rewarded one run for fifty years of gated, never-built pilots. We release all prompts, run records, scores and an API harness with ablations, and we specify a controlled follow-up design with pre-registered hypotheses.
+Can an organization of LLM agents reinvent itself as technology changes, and can we tell whether it is learning? We introduce \sys{}, a long-horizon testbed in which a simulated firm, voiced by sixteen role personas across four departments with a dedicated Red Team, must re-found itself in each of nine technology eras from 1990 to 2040. The firm carries an explicit organizational memory (a Playbook of lessons), logs dissent at every board meeting, and in six \emph{training} eras (1990--2020) is scored against what actually happened by an LLM historian-judge, using a temporally gated protocol with dated briefings, anti-hindsight rules and a five-dimension rubric; one live era (September 2026) and two forecast eras follow without an answer key. Across four exploratory trajectories (36 era decisions, 180 subscores, three orchestration schemes) we observe recurring organizational behaviour: the firm names the coming capability shift but builds the adjacent, asset-reachable layer (layer choice is the lowest-rated dimension in every run); a strong Red Team drives one firm into a ``caution attractor'' of gated pilots that never ships in fifty years yet scores highest; the content of the Playbook predicts the firm's conduct; and all four runs converge on accountability for delegated AI work by 2040. Auditing the score, we find that apparent improvement is confounded with hindsight leakage (scores rise $+1.4$ to $+2.6$ points per era while the judge's leakage subscore worsens; per-run $r$ from $-0.38$ to $-0.92$), and we document self-judging, briefing-selection leakage, inconsistent aggregation, an export error and cross-run contamination. We release all artifacts and an API harness with ablations, and specify how the testbed becomes a benchmark with fictional and post-cutoff eras, harness-computed scores and human raters.
 \end{abstract}
 
 \section{Introduction}
 
-How well can an LLM-based organization reason about technological change? Existing multi-agent systems show that role-structured LLM agents can collaborate on software, simulation and open-ended tasks \citep{park2023generative,qian2024chatdev,hong2024metagpt,li2023camel,chen2024agentverse,guo2024survey}, and LLM forecasting systems now approach human crowds on some question sets \citep{halawi2024forecasting,karger2024forecastbench}. Strategy, however, is harder to evaluate than code or calibrated probabilities. The quality of a strategic call is usually revealed years later, if at all.
+LLM agents are increasingly organized into teams with roles, memory and review steps \citep{park2023generative,qian2024chatdev,hong2024metagpt,li2023camel,chen2024agentverse,guo2024survey}. Most evaluations of such organizations are short: a codebase, a task, a debate. Real organizations face a harder problem. The technology they are built on keeps changing, and a firm that was right in one decade must decide, repeatedly and under uncertainty, whether to abandon what it knows. Management research has studied this problem for decades \citep{march1991exploration,cohen1990absorptive,teece1997dynamic,christensen1997innovator}. We ask what an LLM agent organization does when it faces it.
 
-History offers an answer key. If an organization decides in January 1996 using only what was public then, we can compare its decision with what happened from 1996 to 2001. This is the logic of backtesting in finance and of retrospective forecasting benchmarks. For LLMs the key is leaky: a model trained on text written after 1996 knows which companies won. The problem is well known for question-answering benchmarks and forecasting evaluations \citep{sainz2023trouble,golchin2024timetravel,cheng2024dated,glasserman2023lookahead,paleka2026pitfalls}. It is sharper for open-ended strategy, where the model's own reasoning chooses what to mention and an LLM judge decides what counts as foresight.
+We introduce \sys{}, a testbed that places one simulated firm in nine eras of technological change, from office networking in 1990 to delegated AI agents in 2040. Sixteen named personas in four departments write strategy memos, a Red Team attacks every proposal, the board decides what the company becomes, and a Playbook carries lessons from era to era. In six training eras the firm decides with dated information and is then scored against history; in the last three it faces the live market and the future.
 
-This paper presents \sys{}, a protocol and set of artifacts for studying that problem in a setting that is deliberately open-ended. One simulated company, voiced by sixteen named role personas and two external judges, must reinvent itself in each of nine eras. The judge scores every decision, and the organization carries lessons forward in a Playbook, so we can ask whether scores improve over eras and why.
+This design lets us observe organizational behaviour over a horizon no single task can cover. It also exposes a measurement problem. History is an attractive answer key, but LLMs already know it \citep{sainz2023trouble,golchin2024timetravel,cheng2024dated,glasserman2023lookahead,paleka2026pitfalls}, and an LLM judge decides what counts as foresight. A firm that ``learns'' may simply be remembering.
 
-We report four exploratory trajectories. They are not a controlled experiment, and we are explicit about why. Their value is in what they reveal about measurement:
+We report four exploratory trajectories and find:
 
 \begin{itemize}
-  \item \textbf{Learning and leakage move together.} In every run, training-era scores rise while the hindsight subscore worsens in the same eras (Section~\ref{sec:leakage}).
-  \item \textbf{A consistent weakness in layer choice.} Across all runs, the judge rates layer choice lowest, matching a qualitative pattern of ``naming the frontier, then building the adjacent layer'' (Section~\ref{sec:layer}).
-  \item \textbf{Rubrics can reward paralysis.} One run scored highest while never building a product in fifty simulated years (Section~\ref{sec:caution}).
-  \item \textbf{Mundane measurement failures matter.} Inconsistent aggregation, an export error and probable contamination between runs each change what the data appear to say (Section~\ref{sec:artifacts}).
+  \item \textbf{The firm sees the frontier and builds next to it.} Department memos repeatedly named the coming shift, while the board chose the layer its assets could reach; layer choice is the lowest-rated dimension in every run (Section~\ref{sec:layer}).
+  \item \textbf{Red teams can make timid firms.} In one run, a Red Team with numeric kill gates produced fifty years of gated pilots and no product, and the rubric rated it highest (Section~\ref{sec:caution}).
+  \item \textbf{Memory content shapes conduct.} A Playbook of market-structure lessons and one of validation-process lessons led to very different firms (Section~\ref{sec:memory}).
+  \item \textbf{Improvement is confounded with hindsight.} Scores rise across eras in every run while the judge's own leakage subscore worsens, and routine measurement failures change the picture further (Section~\ref{sec:audit}).
 \end{itemize}
 
-\paragraph{Contributions.} (1) An open protocol for scoring agent-organization strategy against dated history, with role charter, per-era loop, rubrics and anti-hindsight rules. (2) Four fully published trajectories (36 era decisions) including every briefing, memo, board decision and reveal where available, one disclosed operator intervention and all redactions. (3) An analysis of hindsight leakage and related measurement failures as confounds for any ``learn from history'' agent benchmark. (4) A controlled follow-up design with pre-registered hypotheses, ablations, leakage controls and judge-validity checks, supported by an open API harness.
+\paragraph{Contributions.} (1) \sys{}, an open long-horizon testbed for LLM agent organizations: a role charter, a per-era loop with explicit memory and dissent, temporally gated eras, rubrics and an API harness with ablations. (2) Four fully published trajectories (36 era decisions), with every briefing, memo, board decision and reveal where available, one disclosed operator intervention and all redactions. (3) Observations of organizational behaviour in LLM firms, connected to the organizational-learning literature. (4) An audit of the scoring pipeline that identifies hindsight leakage, self-judging and bookkeeping failures as confounds for any historically scored agent evaluation. (5) A path from testbed to benchmark: pre-registered hypotheses, fictional and post-cutoff eras, harness-computed scores and human raters.
 
 \section{Related work}
 
@@ -218,7 +218,8 @@ Run & Orchestration & Records & Known issues \\
 
 \paragraph{Operator intervention and redactions.} During Run 001, the service that approves new agent launches timed out for about thirty minutes at the E6 board step. The operator wrote the E6 board decision directly from the E6 memos, Playbook and company state, and informed the E6 judge, who penalized the era for having no independent Red Team. Run 001 was performed alongside one founder's own planning; three passages that applied the simulation to that founder's situation were removed before publication. No other text was edited.
 
-\section{Results}
+\section{Organizational behaviour over fifty years}
+\label{sec:behaviour}
 
 \subsection{Trajectories}
 
@@ -248,23 +249,7 @@ Run & Mean & SD & Slope & E1--E3 & E4--E6 & Mean hindsight & $r(T, h)$ & $r(\til
 \end{tabular}
 \end{table}
 
-\subsection{Learning and leakage are confounded}
-\label{sec:leakage}
-
-If the Playbook helped the organization learn, scores should rise over eras. They do. But the judge's hindsight subscore falls in the same eras: every run shows a negative correlation between the era total and the hindsight subscore (Table~\ref{tab:summary}, Figure~\ref{fig:leak}). The correlation remains negative for the mechanical aggregate $\tilde{T}$, even though $\tilde{T}$ includes the hindsight subscore itself and is therefore biased toward a positive correlation. With $n=6$ per run none of these correlations is individually reliable, but the direction is the same in all four.
-
-Two readings fit the data. Under the \emph{learning} reading, the organization genuinely improves, and later eras also happen to be harder to judge without hindsight. Under the \emph{leakage} reading, later eras are closer to the model's densest knowledge (the 2008--2020 technology history is heavily documented), so the model recalls winners more easily, scores better, and is penalized for it only partly. The Run 001 E6 decision illustrates the problem: its tripwire (``a public model at least ten times larger than Megatron that works from prompts alone'') matched GPT-3 five months later. That decision was also written by the operator, not the agents, so it is doubly uninformative. Separating the two readings requires eras the model cannot remember (Section~\ref{sec:v2}).
-
-Pooled across the 24 training eras, the total--hindsight correlation is weaker ($r=-0.24$) because run-level offsets differ: Run 004 has both the highest mean hindsight subscore (7.33) and the highest mean total. Within the pool, frontier accuracy is the subscore most correlated with the total ($r=0.67$).
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\linewidth]{figures/fig_leakage.pdf}
-\caption{Training-era total against the judge's hindsight subscore, per run. Dashed lines are least-squares fits. Labels mark eras.}
-\label{fig:leak}
-\end{figure}
-
-\subsection{Layer choice is consistently weakest}
+\subsection{Seeing the frontier, building the adjacent layer}
 \label{sec:layer}
 
 Figure~\ref{fig:sub} shows mean training subscores. Layer choice is the lowest dimension in every run (4.67, 5.83, 5.50 and 5.50 out of 10), while frontier accuracy is the highest or joint highest in three runs. In the judge's words, the organization usually saw what was coming but chose where to stand badly.
@@ -297,12 +282,19 @@ E6 2020 & Scale of pretrained models & Outcome-graded evaluation (Clearproof) & 
 \end{tabularx}
 \end{table}
 
-\subsection{A caution attractor}
+\subsection{Red teams make timid firms}
 \label{sec:caution}
 
 Run 004 behaved differently from the others. Its Red Team produced numeric kill thresholds in every era (for example, ``stop if fewer than 3 of 10 support managers confirm recurring incidents''), and every board decision chose a manual, gated pilot with no software build until the gates passed. Across fifty simulated years the company moved from LAN support records to online-order exceptions to payment-dispute evidence to independent workflow qualification, and never built a product. It considered the Web and learned models only as deferred options and never pursued them.
 
 Run 004 nonetheless has the highest training mean (66.0) and the highest hindsight subscores (mean 7.33). Its forecast eras received 9/10 for playbook consistency for re-applying the same gates. The rubric rewards the absence of hindsight and the presence of discipline, and it has no dimension that asks whether the company reached where value pooled. This mirrors the ``timid choices'' pattern described for human organizations \citep{kahneman1993timid} and an exploitation trap in March's sense \citep{march1991exploration}: a strong devil's advocate \citep{schwenk1990devils} combined with a hindsight penalty can drive a simulated organization toward inaction that a judge scores as prudence.
+
+\subsection{What the organization remembers}
+\label{sec:memory}
+
+The Playbook is the firm's only memory besides its company state. Its content differed sharply between runs. Run 001 accumulated about forty lessons with explicit revisions, most about technology and market structure: ``bridges expire when the standards war ends'', ``the auction owner absorbs the measurement'', ``a public curve pools value at its scarce inputs''. Later eras revised earlier lessons when history contradicted them; for example, the E3 judge softened ``suspect comfort'' to ``judge on market pull'' after the comfortable options it had rejected turned out to be large businesses, and the E5 judge marked an E2 lesson about certification as contradicted. Run 004's fifteen lessons are all about validation process (measure a baseline, find the payer, write kill thresholds before testing, require a second paying buyer) and none names a technology or a market structure. The two firms behaved accordingly: Run 001 pivoted between technology layers every era, while Run 004 refined one operating method for fifty years. Runs 002 and 003 kept one lesson per era and sit between the two. What an agent organization chooses to remember appears to shape what it does next, in line with accounts of organizational learning as the encoding of experience into routines \citep{levitt1988organizational}.
+
+Run 001 also logged dissent at every board meeting. Its final synthesis lists vindicated dissents in E1--E8, most often those asking who holds the money or the loss. Nobody counted the dissents that proved wrong, so this is not yet a rate, and in the live and forecast eras ``vindicated'' means only that the Auditor agreed.
 
 \subsection{Convergence of the forecasts}
 
@@ -325,6 +317,27 @@ Run & E7 (Sep 2026) & E8 (2032) & E9 (2040) \\
 \end{tabularx}
 \end{table}
 
+\section{Auditing the score}
+\label{sec:audit}
+
+The behaviours above are described through the judge. This section asks how far the judge's numbers can be trusted.
+
+\subsection{Is it learning? The hindsight confound}
+\label{sec:leakage}
+
+If the Playbook helped the organization learn, scores should rise over eras. They do (Table~\ref{tab:summary}). But the judge's hindsight subscore falls in the same eras: every run shows a negative correlation between the era total and the hindsight subscore (Table~\ref{tab:summary}, Figure~\ref{fig:leak}). The correlation remains negative for the mechanical aggregate $\tilde{T}$, even though $\tilde{T}$ includes the hindsight subscore itself and is therefore biased toward a positive correlation. With $n=6$ per run none of these correlations is individually reliable, but the direction is the same in all four.
+
+Two readings fit the data. Under the \emph{learning} reading, the organization genuinely improves, and later eras also happen to be harder to judge without hindsight. Under the \emph{leakage} reading, later eras are closer to the model's densest knowledge (the 2008--2020 technology history is heavily documented), so the model recalls winners more easily, scores better, and is penalized for it only partly. The Run 001 E6 decision illustrates the problem: its tripwire (``a public model at least ten times larger than Megatron that works from prompts alone'') matched GPT-3 five months later. That decision was also written by the operator, not the agents, so it is doubly uninformative. Separating the two readings requires eras the model cannot remember (Section~\ref{sec:v2}).
+
+Pooled across the 24 training eras, the total--hindsight correlation is weaker ($r=-0.24$) because run-level offsets differ: Run 004 has both the highest mean hindsight subscore (7.33) and the highest mean total. Within the pool, frontier accuracy is the subscore most correlated with the total ($r=0.67$).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{figures/fig_leakage.pdf}
+\caption{Training-era total against the judge's hindsight subscore, per run. Dashed lines are least-squares fits. Labels mark eras.}
+\label{fig:leak}
+\end{figure}
+
 \subsection{Measurement artifacts}
 \label{sec:artifacts}
 
@@ -345,20 +358,20 @@ Run & E7 (Sep 2026) & E8 (2032) & E9 (2040) \\
 
 \section{Discussion}
 
-The pilot does not show that an LLM organization learns strategy from history. It shows why the obvious way of testing that claim is unreliable, and which controls a credible test needs.
+\paragraph{For designing agent organizations.} Structure changes behaviour in ways that are easy to miss in short tasks. A Red Team is usually added to reduce errors \citep{du2024debate,liang2024divergent}; over fifty simulated years, a Red Team with hard numeric gates turned a firm timid. Memory is usually treated as a performance aid \citep{shinn2023reflexion,wang2023voyager}; here its content set the firm's character. Designers of long-running agent organizations should calibrate critics against the cost of inaction, and audit what their memory stores, not only whether it helps.
 
-First, \emph{rising scores are not evidence of learning} when the scorer and the player share knowledge of the answer. The direction of the total--hindsight relationship was the same in four runs produced under three orchestration schemes. A benchmark that rewards agents for being right about 2008--2020 will partly reward recall.
+\paragraph{For organizational theory.} The LLM firms reproduced patterns documented in human organizations: search near existing competences \citep{cohen1990absorptive}, exploitation crowding out exploration \citep{march1991exploration}, timid choices under loss framing \citep{kahneman1993timid}, and devil's advocacy that improves scrutiny while slowing action \citep{schwenk1990devils}. LLM organizations could become a cheap laboratory for such hypotheses, provided the leakage problem below is controlled.
 
-Second, \emph{the rubric shapes the organization}. Adding hindsight discipline to the total, and giving playbook consistency its own dimension, rewarded a run that took no risks. Rubrics for open-ended strategy need a measure of outcome capture that cannot be satisfied by caution.
+\paragraph{For evaluation.} Rising scores are not evidence of learning when scorer and player share knowledge of the answer; the direction of the total--hindsight relationship was the same in four runs under three orchestration schemes. The rubric shaped the firm: counting hindsight discipline toward the total rewarded a run that took no risks. Self-judging compounds both problems, since LLM judges favour their own outputs \citep{panickssery2024selfpref}, and in Run 001 the E8 judge's kill case became the E9 world. Finally, bookkeeping matters: the aggregation inconsistency and the export error were each enough to change a naive cross-run comparison.
 
-Third, \emph{self-judging compounds both problems}. LLM judges favour their own outputs \citep{panickssery2024selfpref}. In our runs the judge also wrote the next briefing, and in Run 001 the E8 judge's kill case became the E9 world, so forecast-era scores partly graded the judge's own scenario.
-
-Fourth, \emph{bookkeeping matters}. The aggregation inconsistency and the export error were each enough to change a naive cross-run comparison. Totals should be computed by code from structured subscores, never typed by the judge.
-
-\section{A controlled follow-up design}
+\section{From testbed to benchmark}
 \label{sec:v2}
 
-We specify a v2 experiment, supported by the repository's harness, to test the pilot's hypotheses.
+The pilot is a testbed. Turning it into a benchmark requires fixed splits, controls and scoring by code. We specify a v2 design, supported by the repository's harness.
+
+\paragraph{Splits.} Three era types: \emph{historical} eras (E1--E6), a \emph{fictional} era with an invented but consistent technology history, and a \emph{post-cutoff} era that falls after the player model's training data. Only the last two can separate foresight from recall; the historical split measures behaviour under a known leak.
+
+\paragraph{Reported metrics.} Per-era total $\tilde{T}$ computed by the harness; training-era slope; frontier capture (layer matched, neighboured or missed); layer distance; dissent accuracy over all logged dissents; leakage rate from the judge and a vocabulary probe; and human--model agreement.
 
 \paragraph{Pre-registered hypotheses.} H1: the training-era slope of the total is higher with the Playbook than without it. H2: the full organization beats a single-prompt founder baseline on mean training score. H3: on a fictional era, the judge's leakage subscore does not differ between conditions, a calibration check for the leakage measure. H4: layer choice is judged ``adjacent'' more often than ``match'' in all conditions.
 
@@ -378,7 +391,7 @@ The four trajectories share a small number of model families and are not a contr
 
 \section{Conclusion}
 
-\sys{} turns a simple question, whether an LLM organization can learn strategy by being scored against history, into a protocol with published artifacts. Four exploratory runs suggest that the answer cannot be read off the scores: improvement and hindsight leakage move together, rubrics can reward caution over foresight, and routine bookkeeping errors change the picture. We hope the protocol, the artifacts and the controlled design are useful to others building ``learn from history'' evaluations for agents.
+\sys{} places an LLM agent organization in fifty years of technological change and watches what it becomes. Across four exploratory runs the firms saw coming shifts but built beside them, grew timid under a strict Red Team, took their character from what their memory stored, and converged on the same future. Whether any of this reflects learning cannot be read off the scores: improvement moved with hindsight leakage, and the scoring pipeline itself introduced errors. We release the testbed, the records and a path to a controlled benchmark, so that these behaviours can be tested where the model cannot remember the answer.
 
 \section*{Ethics and disclosure}
 
