@@ -11,3 +11,10 @@ Historical briefings are bounded to each era's start date as a discipline; model
 ## Results
 
 See [`final_synthesis.md`](final_synthesis.md), [`company_state.md`](company_state.md), [`playbook.md`](playbook.md), and [`scores.csv`](scores.csv).
+
+## Review note (29 Sep 2026)
+
+- **Probable exposure to Run 001.** The company begins as "Switchyard Systems", Run 001's E1 name. The run was probably generated with the repository's Run 001 records visible; treat it as conditioned on Run 001, not as an independent replication.
+- **Judge independence.** The root context that wrote the briefings and board decisions also acted as Record/Auditor, so the judge scored its own decisions.
+- **Rubric effect.** Hindsight discipline counts toward the total (sum × 2). The company never built a product across the nine eras (every decision is a gated manual pilot) yet has the highest training mean of the four runs. The rubric has no measure of whether the company reached where value pooled.
+- **Briefing selection.** Dated briefings contain only pre-era facts, but choosing which signals to foreground (for example the 1989 CERN proposal in E1) can itself reflect hindsight.
