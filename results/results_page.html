@@ -112,7 +112,7 @@ td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
   <header>
     <span class="eyebrow">Multi-agent simulation · 16 agents · 9 eras · ~45 agent runs</span>
     <h1>One startup, fifty years, one job: reinvent toward the frontier</h1>
-    <p class="lede">A 16-person AI org lived through 1990–2020 as training. In each era it decided using only what was knowable then, and a historian-judge then revealed what actually happened and scored the call. From 2026 it forecast without an answer key. Pick an era to see what the company became, what reality did, and what it learned. Run 001, September 2026.</p>
+    <p class="lede">A 16-person AI org lived through 1990–2020 as training. In each era it decided using only what was knowable then, and a historian-judge then revealed what actually happened and scored the call. From 2026 it forecast without an answer key. The interactive trajectory below shows Run 001; the separate ChatGPT pilot is summarized after it.</p>
   </header>
 
   <section class="stack" aria-labelledby="traj">
@@ -122,6 +122,23 @@ td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
       <div class="tip" id="tip" hidden></div>
       <p class="chart-note">Training eras (1990–2020) were scored against real history. 2026 was scored against today's real market. 2032 and 2040 are scored against projected worlds and have no ground truth.</p>
     </div>
+  </section>
+
+  <section class="stack" aria-labelledby="pilotH">
+    <h2 id="pilotH">ChatGPT pilot · 2026-09-29</h2>
+    <p class="lede">A separate one-model qualitative run, generated directly in ChatGPT. Scores: E1–E9 = 62, 66, 60, 66, 64, 72, 66, 62, 60. Training average 65; forecast average (E8–E9) 61. Its historical and forecast rubrics differ, so compare within modes only.</p>
+    <div class="table-wrap"><table><thead><tr><th>Era</th><th>Company</th><th>Mode</th><th>Score</th></tr></thead><tbody>
+      <tr><td>E1 · 1990</td><td>Switchyard</td><td>Training</td><td>62</td></tr>
+      <tr><td>E2 · 1996</td><td>Manifest</td><td>Training</td><td>66</td></tr>
+      <tr><td>E3 · 2002</td><td>Ledgerline</td><td>Training</td><td>60</td></tr>
+      <tr><td>E4 · 2008</td><td>Clearline</td><td>Training</td><td>66</td></tr>
+      <tr><td>E5 · 2014</td><td>Vectorial</td><td>Training</td><td>64</td></tr>
+      <tr><td>E6 · 2020</td><td>Proofline</td><td>Training</td><td>72</td></tr>
+      <tr><td>E7 · 2026</td><td>Tracewell</td><td>Live</td><td>66</td></tr>
+      <tr><td>E8 · 2032</td><td>Consequence</td><td>Forecast</td><td>62</td></tr>
+      <tr><td>E9 · 2040</td><td>Recourse</td><td>Forecast</td><td>60</td></tr>
+    </tbody></table></div>
+    <p class="chart-note">One model supplied all role perspectives and judging; this is not a controlled v2 experiment or independent-agent replication. Historical scores and simulated outcomes are subjective. See <code>runs/v2-chatgpt/final_synthesis.md</code> and <code>results/v2-chatgpt-scores.csv</code>.</p>
   </section>
 
   <section class="stack" aria-labelledby="eraH">
