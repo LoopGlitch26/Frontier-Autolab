@@ -50,4 +50,4 @@ The repeated pattern is that a capability jump creates an adoption problem, but 
 
 ## Limitations
 
-This is a single-model run, with no separate department models, API logs, human raters, ablations, or repeated seeds. Role transcripts were not independently elicited. Historical facts were recalled rather than sourced era-by-era, so the anti-hindsight scores are subjective and cannot demonstrate leakage control. Simulated financing and outcomes are illustrative. The run is not the controlled experiment specified in `docs/limitations-and-v2.md`; it is a qualitative run. Forecast scores have no answer key.
+This is a qualitative, single-model run made with the separate manually orchestrated harness. Role transcripts were not independently elicited. Historical facts were recalled rather than sourced era-by-era, so the anti-hindsight scores are subjective and cannot demonstrate leakage control. Simulated financing and outcomes are illustrative. The run is not the controlled experiment specified in `docs/limitations-and-v2.md`; it is not a controlled replication. Forecast scores have no answer key.

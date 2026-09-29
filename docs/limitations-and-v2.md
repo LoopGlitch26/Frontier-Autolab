@@ -2,7 +2,7 @@
 
 | Problem | Why it matters |
 |---|---|
-| n = 1 | The patterns (adjacent-layer choice, dissent accuracy) could be noise from one run. |
+| No controlled replication | There are three qualitative trajectories, but no condition has repeated runs under a controlled harness; patterns may be noise or prompt effects. |
 | One model plays every role | Dissent is simulated diversity, and the judge grades reasoning produced by its own priors. |
 | Hindsight is measured, not controlled | The model knows 1990–2026. The anti-hindsight rule is a discipline, not a guarantee, and the leakage subscore is self-graded. |
 | Learning and leakage are confounded | Training scores rose in E4–E5, the same eras in which the leakage subscore worsened. Run 001 cannot tell improvement from leakage. |
@@ -11,6 +11,14 @@
 | Forecast eras are circular | The E8 judge wrote the kill case that became the E9 world. |
 | Operator intervention | The E6 board decision, including its GPT-3-like tripwire, was written by the operator (see [run-001-notes.md](run-001-notes.md)). |
 | Qualitative claims are judge-labelled | "Named the frontier", "adjacent layer" and "dissent was right" are the judge's words, not counted metrics. |
+
+## Provenance of the existing runs
+
+| Run | Execution method | Interpretation |
+|---|---|---|
+| 001 | Original file-based sub-agent orchestration; one human-authored board decision in E6 | Role calls used separate agent launches, but shared a model family and hindsight exposure. |
+| 002–003 | Separate, manually orchestrated harness following the same era prompts; one model generated all role perspectives and judging per run | Useful as qualitative alternate trajectories, not independent-agent replications or controlled samples. |
+| Python `harness/` | API-based runner with ablations and logging; not used to produce Runs 001–003 | Its ability to reproduce the published trajectories has not been evaluated. |
 
 ## Status of each run-001 observation
 

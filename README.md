@@ -2,11 +2,11 @@
 
 **A multi-agent startup that reinvents itself across fifty years of technology history.**
 
-Sixteen LLM agents with named roles run one company. It lives through 1990–2020 as *training*: in each era it decides using only what was knowable then. A historian-judge then reveals what actually happened, scores the call, and writes lessons into a Playbook that carries into the next era. From 2026 the trained org forecasts 2032 and 2040, where there is no answer key.
+Sixteen named agent roles make decisions for one company. It lives through 1990–2020 as *training*: in each era it decides using only what was knowable then. A historian-judge then reveals what actually happened, scores the call, and writes lessons into a Playbook that carries into the next era. From 2026 the trained org forecasts 2032 and 2040, where there is no answer key.
 
 The research question: **can an agent organization learn strategy by being scored against history, and does hindsight leakage make that scoring meaningless?**
 
-> Status: exploratory. `runs/run-001` is one harness run; `runs/run-002` and `runs/run-003` are separate ChatGPT-generated qualitative runs, not controlled replications. Treat all results as hypotheses for the experiments described in [docs/limitations-and-v2.md](docs/limitations-and-v2.md).
+> Status: exploratory. Run 001 used the original sub-agent orchestration. Runs 002 and 003 used a separate, manually orchestrated harness that follows the same era prompts, with one model generating each run's department perspectives, board decisions, and judging. None is a controlled replication. See [the run limitations and experiment plan](docs/limitations-and-v2.md).
 
 ## Run 001 at a glance
 
@@ -42,9 +42,23 @@ Training average 62.5; forecast average 57. This is a one-model qualitative run;
 
 ## Run 003 at a glance
 
-A fresh qualitative run scored 62, 66, 60, 66, 64, 72, 66, 62, 60 across E1–E9 (training average 65; forecast average 61). Its artifacts and caveats are in [`runs/run-003`](runs/run-003), with a separate score export at [`results/run-003-scores.csv`](results/run-003-scores.csv). This one-model role-play is not an independent-agent run, controlled ablation, or evidence that the Playbook improves performance.
+| Era | Mode | Company | The call | Score |
+|---|---|---|---|---:|
+| 1990 | training | Switchyard | Mail and address gateway between incompatible networks | 62 |
+| 1996 | training | Manifest | Receipted Web-EDI exchange | 66 |
+| 2002 | training | Ledgerline | Neutral cross-channel conversion ledger | 60 |
+| 2008 | training | Clearline | Exchange for verified in-app actions | 66 |
+| 2014 | training | Vectorial | Narrow deep-learning risk decision with outcome feedback | 64 |
+| 2020 | training | Proofline | Outcome evaluation for language-model workflows | 72 |
+| 2026 | live | Tracewell | Rights-bearing workflow traces and reliability evidence | 66 |
+| 2032 | forecast | Consequence | Acceptance records for delegated work | 62 |
+| 2040 | forecast | Recourse | Bounded recourse for delegated actions | 60 |
 
-**Main observations (from one run: hypotheses, not findings)**
+Training average 65; forecast average 61. Details are in [`runs/run-003`](runs/run-003), and scores are in [`results/run-003-scores.csv`](results/run-003-scores.csv).
+
+Runs 002 and 003 used the same separate, manually orchestrated harness. This is role simulation by one model, not an independent-agent run, controlled ablation, or evidence that the Playbook improves performance. The Python API harness in `harness/` was not used for either run.
+
+**Run 001 observations (hypotheses, not findings)**
 
 1. **Named the frontier, built the adjacent layer.** In every era the department memos identified the real capability jump. The board then chose the layer its existing assets could reach, one step away from where value pooled.
 2. **Dissent beat decisions.** Logged dissents about *who holds the money or the loss* were right far more often than the board's call.
@@ -72,7 +86,7 @@ Details: [docs/methodology.md](docs/methodology.md).
 
 ```
 prompts/            charter.md + the exact instructions given to agents in run 001
-harness/            a reproducible Python harness for new runs (Anthropic API)
+harness/            Python API harness for new runs (Anthropic API)
 runs/run-001/       every briefing, memo, board decision and reveal from run 001
   eras/E1..E9/      world_briefing.md, memo_{frontier,product,market}.md, board_decision.md, reveal.md
   playbook.md       the lessons as they accumulated
@@ -89,6 +103,8 @@ docs/               methodology, run notes, limitations and v2 plan
 
 Run 001 was executed by an orchestrating agent that launched sub-agents with file and web tools (the instructions are in `prompts/`). The `harness/` package reproduces the same loop with direct API calls, so runs can be repeated, varied and compared.
 
+Runs 002 and 003 followed the same era sequence with a separate manually orchestrated harness and one model per run for all role perspectives and judging. They were not generated by the Python API harness and are qualitative trajectories rather than independent-agent replications.
+
 ```bash
 pip install -r requirements.txt
 export ANTHROPIC_API_KEY=...
@@ -97,7 +113,7 @@ export ANTHROPIC_API_KEY=...
 python -m harness.run --run-id dry --dry-run
 
 # a full run: separate models for players and judges is recommended
-python -m harness.run --run-id run-003 --player-model <model-id> --judge-model <other-model-id> --web-search
+python -m harness.run --run-id run-004 --player-model <model-id> --judge-model <other-model-id> --web-search
 
 # ablations
 python -m harness.run --run-id abl-noplaybook --ablation no_playbook   --player-model <id> --judge-model <id>
@@ -112,7 +128,7 @@ Every prompt and raw response is logged under `runs/<run-id>/logs/`. Runs resume
 
 ## Limitations
 
-- **One run**, one model for all players and judges.
+- **Three trajectories, no controlled replication.** Each used one underlying model for the role perspectives and judging; Runs 002 and 003 used a separate manual harness, not the API runner.
 - **Hindsight is measured, not prevented.** The model knows what happened after 1990.
 - **Outcomes are simulated.** Revenues, exits and probabilities are the judges' calibrated guesses.
 - **Human intervention:** the 2020 board decision was written by the operator during an outage of agent launches. The 2020 judge was told and penalised it.
