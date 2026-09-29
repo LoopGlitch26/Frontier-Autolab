@@ -1,0 +1,11 @@
+# E7 world briefing — September 2026
+
+**Evidence date:** 29 September 2026. This is a live-world briefing, not a forecast. The facts below describe the cited publications and should not be generalized beyond their samples.
+
+IBM Research's CAP study used 20 case studies and a survey of 306 practitioners across 26 domains. It reports that 68% of surveyed production agents execute at most ten steps before human intervention, 74% rely primarily on human evaluation, and 70% use prompting with off-the-shelf models rather than weight tuning. These findings suggest bounded operation and human evaluation are common in that sample; they do not establish that all deployed agents behave this way or that human oversight is adequate.
+
+Scale Labs' READY framework evaluates deployment reliability against required human oversight and operating cost for a concrete workflow. In its clinical-audit case study (16 agent systems, 750 cases), systems with similar autonomous accuracy required different rates of human review to meet the specified reliability target. Microsoft Learn's agent adoption maturity guidance describes governed data and integrations, approvals, CI/CD, telemetry, and lifecycle controls as enterprise practices. Gartner's 2026 research abstract identifies reliability as a challenge in moving agents from demonstrations into production.
+
+Switchyard's evidence-packet concept has no validated paying customer or proven margins. The live opportunity is not established by these sources. Competing substitutes include payment processors, commerce platforms, dispute/case-management software, internal operations teams, and general agent/evaluation platforms. Any claim that an independent vendor can win a budget is an extrapolation that must be tested with named buyers and permissioned cases.
+
+Sources: [IBM Research, Characterizing Agents in Production](https://research.ibm.com/publications/characterizing-agents-in-production); [Scale Labs, READY](https://labs.scale.com/papers/reliable-enterprise-agent-deployment); [Microsoft, Agentic AI adoption maturity model](https://learn.microsoft.com/en-us/agents/adoption-maturity-model/); [Gartner, From Demo to Production](https://www.gartner.com/en/documents/7832217).

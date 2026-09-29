@@ -2,7 +2,7 @@
 
 **A multi-agent startup that reinvents itself across fifty years of technology history.**
 
-Sixteen named agent roles make decisions for one company. It lives through 1990–2020 as *training*: in each era it decides using only what was knowable then. A historian-judge then reveals what actually happened, scores the call, and writes lessons into a Playbook that carries into the next era. From 2026 the trained org forecasts 2032 and 2040, where there is no answer key.
+Sixteen named roles are represented in the simulation for one company. It lives through 1990–2020 as *training*: in each era it decides using only what was knowable then. A historian-judge then reveals what actually happened, scores the call, and writes lessons into a Playbook that carries into the next era. From 2026 the org forecasts 2032 and 2040, where there is no answer key. Orchestration differs by run; consult each run's methodology before treating role voices as independent agents.
 
 The research question: **can an agent organization learn strategy by being scored against history, and does hindsight leakage make that scoring meaningless?**
 
@@ -58,6 +58,24 @@ Training average 65; forecast average 61. Details are in [`runs/run-003`](runs/r
 
 Runs 002 and 003 used the same separate, manually orchestrated harness. This is role simulation by one model, not an independent-agent run, controlled ablation, or evidence that the Playbook improves performance. The Python API harness in `harness/` was not used for either run.
 
+## Run 004 at a glance
+
+| Era | Mode | Company | The call | Score |
+|---|---|---|---|---:|
+| 1990 | training | Switchyard Systems | Permissioned LAN-support casebook for one environment | 60 |
+| 1996 | training | Switchyard Systems | Guided troubleshooting with buyer and accuracy gates | 62 |
+| 2002 | training | Switchyard Commerce Operations | Manual online-order exception triage | 62 |
+| 2008 | training | Switchyard Commerce Operations | Permissioned merchant exception workflow, no connectors | 70 |
+| 2014 | training | Switchyard Evidence Operations | Human-reviewed packet for one payment-dispute type | 70 |
+| 2020 | training | Switchyard Evidence Operations | Rules-based packet completeness check | 72 |
+| 2026 | live | Caseground | Independent qualification for one dispute workflow | 66 |
+| 2032 | forecast | Caseground | Conditional paid manual acceptance test | 68 |
+| 2040 | forecast | Caseground | Conditional decision-linked evaluation | 66 |
+
+Training mean 66; forecast mean 67; live E7 score 66. Training and forecast rubrics differ, so compare within modes only. Scores are subjective judge assessments, not measurements of company performance. Full records, score details, and limitations are in [`runs/run-004`](runs/run-004), [`runs/run-004/final_synthesis.md`](runs/run-004/final_synthesis.md), and [`results/run-004-scores.csv`](results/run-004-scores.csv).
+
+Run 004 used separate department contexts for Frontier Research, Product & Engineering, and Market & Capital, plus a separate Red Team context. Roles within each department memo shared that context. The root context wrote briefings, board decisions, and Record/Auditor judgments. It represented the charter's 16 roles but did **not** instantiate 16 separately autonomous agents. Run 004 is a multi-context role simulation, not a controlled replication or proof that the Playbook improves strategy. E1–E6 use dated briefs but cannot eliminate model hindsight; E8–E9 are projections without an answer key. The E7 folder links current sources and competitor documentation.
+
 **Run 001 observations (hypotheses, not findings)**
 
 1. **Named the frontier, built the adjacent layer.** In every era the department memos identified the real capability jump. The board then chose the layer its existing assets could reach, one step away from where value pooled.
@@ -95,7 +113,8 @@ runs/run-001/       every briefing, memo, board decision and reveal from run 001
   final_synthesis.md
 runs/run-002/       qualitative run records, company state, Playbook, synthesis
 runs/run-003/       qualitative run records, company state, Playbook, synthesis
-results/            run-001, run-002, and run-003 score exports, results_page.html
+runs/run-004/       multi-context role simulation; era briefs, department memos, critiques, decisions, audits
+results/            score exports for runs 001–004, results_page.html
 docs/               methodology, run notes, limitations and v2 plan
 ```
 
@@ -113,7 +132,7 @@ export ANTHROPIC_API_KEY=...
 python -m harness.run --run-id dry --dry-run
 
 # a full run: separate models for players and judges is recommended
-python -m harness.run --run-id run-004 --player-model <model-id> --judge-model <other-model-id> --web-search
+python -m harness.run --run-id run-005 --player-model <model-id> --judge-model <other-model-id> --web-search
 
 # ablations
 python -m harness.run --run-id abl-noplaybook --ablation no_playbook   --player-model <id> --judge-model <id>
@@ -121,14 +140,14 @@ python -m harness.run --run-id abl-noredteam  --ablation no_redteam    --player-
 python -m harness.run --run-id abl-single     --ablation single_prompt --player-model <id> --judge-model <id>
 
 # compare runs
-python -m harness.compare runs/run-001 runs/run-002 runs/run-003 runs/abl-noplaybook
+python -m harness.compare runs/run-001 runs/run-002 runs/run-003 runs/run-004 runs/abl-noplaybook
 ```
 
 Every prompt and raw response is logged under `runs/<run-id>/logs/`. Runs resume: completed eras are skipped.
 
 ## Limitations
 
-- **Three trajectories, no controlled replication.** Each used one underlying model for the role perspectives and judging; Runs 002 and 003 used a separate manual harness, not the API runner.
+- **Four trajectories, no controlled replication.** Runs 002 and 003 used one model for all role perspectives and judging. Run 004 used separate contexts for three departments and the Red Team; the root context handled board/Record/Auditor. Roles within a department were not independent contexts.
 - **Hindsight is measured, not prevented.** The model knows what happened after 1990.
 - **Outcomes are simulated.** Revenues, exits and probabilities are the judges' calibrated guesses.
 - **Human intervention:** the 2020 board decision was written by the operator during an outage of agent launches. The 2020 judge was told and penalised it.
