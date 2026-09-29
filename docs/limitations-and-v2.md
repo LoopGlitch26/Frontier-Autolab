@@ -1,7 +1,5 @@
 # Limitations and the v2 experiment
 
-## Why run 001 is not a paper yet
-
 | Problem | Why it matters |
 |---|---|
 | n = 1 | The patterns (adjacent-layer choice, dissent accuracy) could be noise from one run. |
