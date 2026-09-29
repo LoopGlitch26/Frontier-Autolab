@@ -26,7 +26,7 @@
 \newcommand{\sys}{\textsc{Frontier Autolab}}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 
-\title{Seeing the Frontier, Building Beside It:\\LLM Agent Organizations Across Fifty Years of Technological Change}
+\title{Frontier Autolab: LLM Agent Organizations See the Frontier\\but Build Beside It}
 \author{Bravish Ghosh\\
 \small Independent researcher}
 \date{September 2026}
@@ -65,7 +65,7 @@ History is an appealing answer key, and a treacherous one. The model voicing the
 
 \paragraph{Forecasting and temporal leakage.} Forecasting benchmarks score probabilistic answers to resolvable questions \citep{zou2022autocast,halawi2024forecasting,karger2024forecastbench}, in the tradition of \citet{tetlock2005expert,tetlock2015superforecasting}. Strategic decisions do not resolve cleanly, so we rely on a judge. Retrospective evaluation of LLMs suffers from contamination \citep{sainz2023trouble,golchin2024timetravel}, uncertain effective cutoffs \citep{cheng2024dated} and look-ahead bias \citep{glasserman2023lookahead}; \citet{paleka2026pitfalls} catalogue these pitfalls for LLM forecasters. We add two channels specific to organizational simulation: the choice of what a dated briefing mentions, and a judge that labels foresight after the fact.
 
-\paragraph{LLM judges.} LLM judges track human preferences on many tasks but show position and verbosity biases \citep{zheng2023judging,wang2023notfair} and prefer their own generations \citep{panickssery2024selfpref}. In our runs the judge shares a model family with the players.
+\paragraph{LLM judges.} LLM judges track human preferences on many tasks but show position and verbosity biases \citep{zheng2023judging,wang2023notfair} and prefer their own generations \citep{panickssery2024selfpref}. In each of our runs the judge is the same model as the players.
 
 \paragraph{Organizational learning.} Our protocol operationalizes organizational learning as the encoding of experience into routines \citep{levitt1988organizational}, exploration versus exploitation \citep{march1991exploration}, absorptive capacity \citep{cohen1990absorptive}, dynamic capabilities \citep{teece1997dynamic} and disruption \citep{christensen1997innovator}. The Red Team follows devil's-advocacy research \citep{schwenk1990devils} and is a guard against groupthink \citep{janis1972groupthink}. Hindsight bias in human judgment \citep{fischhoff1975hindsight,roese2012hindsight} is the human counterpart of the leakage we measure.
 
@@ -225,15 +225,15 @@ We ran four trajectories on 28--29 September 2026 (Table~\ref{tab:runs}). They d
 \toprule
 Run & Orchestration & Published per-era records & Known issues \\
 \midrule
-001 & About 45 separate agent launches of an Anthropic Claude model, each starting from shared files only; one launch per memo, board and judgment & Briefing, 3 memos, board decision, reveal; Playbook & E6 board decision written by the operator during a service outage \\
-002 & One OpenAI Codex agent context voiced all roles and the judge & Synthesis, Playbook, company state, scores & Probable exposure to Run 001; export column shift \\
+001 & About 45 separate agent launches of Claude Opus 5.5, each starting from shared files only; one launch per memo, board and judgment & Briefing, 3 memos, board decision, reveal; Playbook & E6 board decision written by the operator during a service outage \\
+002 & One Luna 6 context in the Codex agent voiced all roles and the judge & Synthesis, Playbook, company state, scores & Probable exposure to Run 001; export column shift \\
 003 & As Run 002 & Short decision and reveal per era; synthesis & As Run 002; E6 window ends 2025 \\
-004 & Codex agent with separate persistent contexts per department and Red Team; root context wrote briefings, decisions and judgments & Briefing, 3 memos, Red Team critique, board decision, reveal & Probable exposure to Run 001; judge not independent of the decision-maker \\
+004 & Luna 6 in the Codex agent, with separate persistent contexts per department and Red Team; root context wrote briefings, decisions and judgments & Briefing, 3 memos, Red Team critique, board decision, reveal & Probable exposure to Run 001; judge not independent of the decision-maker \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\paragraph{Models.} Exact model versions were not recorded in the run artifacts. Run 001 used an Anthropic Claude model in an agent environment that could launch sub-agents with file and web tools; Runs 002--004 used an OpenAI Codex agent. The API harness released with the testbed, which separates player and judge models and supports ablations, was not used for these runs.
+\paragraph{Models.} Run 001 used Claude Opus 5.5 in an agent environment that could launch sub-agents with file and web tools. Runs 002--004 used Luna 6 through the OpenAI Codex agent. In every run the same model voiced all personas and the judges. Sampling settings were those of each agent environment and were not recorded. The API harness released with the testbed, which separates player and judge models and supports ablations, was not used for these runs.
 
 \paragraph{Operator intervention.} During Run 001 the service that approves new agent launches timed out for about thirty minutes at the E6 board step. The operator wrote the E6 board decision from the E6 memos, Playbook and company state and told the E6 judge, which penalized the era for the missing Red Team. We exclude nothing from the analysis but flag E6 of Run 001 wherever it matters.
 
@@ -254,7 +254,7 @@ Figure~\ref{fig:traj} shows the published totals. All 36 lie between 52 and 72 (
 \subsection{The foresight--commitment gap}
 \label{sec:gap}
 
-The gap $G_k$ is positive in \emph{all} 24 training eras across the four runs (mean 1.88, SD 0.80; Figure~\ref{fig:gap}). Layer choice is the lowest mean training subscore in every run (4.67, 5.83, 5.50, 5.50), while frontier accuracy is the highest (7.33, 7.83, 7.00, 6.83). If the gap were rubric noise, its sign would vary; under a sign test it would be positive in 24 of 24 eras with probability below $10^{-7}$. That test treats eras as independent, which they are not, and all subscores come from judges of one model family per run, so we read it as a strong regularity of the judged behaviour rather than a population estimate.
+The gap $G_k$ is positive in \emph{all} 24 training eras across the four runs (mean 1.88, SD 0.80; Figure~\ref{fig:gap}). Layer choice is the lowest mean training subscore in every run (4.67, 5.83, 5.50, 5.50), while frontier accuracy is the highest (7.33, 7.83, 7.00, 6.83). If the gap were rubric noise, its sign would vary; under a sign test it would be positive in 24 of 24 eras with probability below $10^{-7}$. That test treats eras as independent, which they are not, and in each run the judge is the same model as the players, so we read it as a strong regularity of the judged behaviour rather than a population estimate.
 
 \begin{figure}[t]
 \centering
@@ -320,7 +320,7 @@ Run 001 also logged dissent at every board meeting, and its final synthesis iden
 
 \subsection{Convergent futures}
 
-By 2040 all four firms had arrived at related theses about accountability for delegated AI work (Table~\ref{tab:converge}): bonding, recourse, warranty or qualification for actions taken by agents without a human signature. The later runs were more sceptical than Run 001 that software evidence alone creates an insurable market; Runs 002 and 003 required a licensed risk-bearing partner and calibrated loss data first. Given a shared model family and probable exposure to Run 001, this convergence is best read as a model prior about where value pools once agents act autonomously, not as independent evidence about the future.
+By 2040 all four firms had arrived at related theses about accountability for delegated AI work (Table~\ref{tab:converge}): bonding, recourse, warranty or qualification for actions taken by agents without a human signature. The later runs were more sceptical than Run 001 that software evidence alone creates an insurable market; Runs 002 and 003 required a licensed risk-bearing partner and calibrated loss data first. The convergence spans two models, but Runs 002--004 share one model and were probably exposed to Run 001, so it is best read as a model prior about where value pools once agents act autonomously, not as independent evidence about the future.
 
 \begin{table}[t]
 \centering
@@ -380,7 +380,7 @@ Two readings fit. Under \emph{learning}, the firm improves and later eras happen
 
 \paragraph{Briefing selection.} A briefing can contain only pre-era facts and still leak. Run 004's 1990 briefing foregrounds the 1989 CERN hypertext proposal as a frontier signal. The fact is admissible; choosing it is not neutral. Because the judge writes the next briefing after seeing how the era turned out (Figure~\ref{fig:loop}), this channel is built into the loop.
 
-\paragraph{Self-judging.} In every run the judge shares a model family with the players, and in Run 004 the same root context wrote the board decisions and scored them. LLM judges prefer their own outputs \citep{panickssery2024selfpref}. In Run 001 the E8 judge's kill case became the premise of the E9 world, so forecast eras partly score the judge's own scenario.
+\paragraph{Self-judging.} In every run the judge is the same model as the players, and in Run 004 the same root context wrote the board decisions and scored them. LLM judges prefer their own outputs \citep{panickssery2024selfpref}. In Run 001 the E8 judge's kill case became the premise of the E9 world, so forecast eras partly score the judge's own scenario.
 
 \paragraph{The rubric shapes the firm.} Counting hindsight discipline toward the total rewards saying little about the future. The caution attractor of Section~\ref{sec:caution} is partly a product of this choice.
 
@@ -420,7 +420,7 @@ The design needs about 46 model calls per run, or 900--1,850 calls across condit
 
 \section{Limitations}
 
-The four trajectories are exploratory and share few model families; later runs were probably exposed to the first. No run instantiated sixteen independent agents. All subscores, including the two that define the foresight--commitment gap, are judge-assigned with hindsight, and qualitative labels such as ``named'' and ``adjacent'' are the judge's. Outcomes such as revenues and exits are the judge's calibrated guesses and compound across eras. Runs 002 and 003 have thinner records. Live-era audits reflect web sources as of September 2026. Forecast eras have no ground truth. Model versions were not recorded. Per-run correlations rest on six points.
+The four trajectories are exploratory and use only two models; later runs were probably exposed to the first. No run instantiated sixteen independent agents. All subscores, including the two that define the foresight--commitment gap, are judge-assigned with hindsight, and qualitative labels such as ``named'' and ``adjacent'' are the judge's. Outcomes such as revenues and exits are the judge's calibrated guesses and compound across eras. Runs 002 and 003 have thinner records. Live-era audits reflect web sources as of September 2026. Forecast eras have no ground truth. Per-run correlations rest on six points.
 
 \section{Conclusion}
 
