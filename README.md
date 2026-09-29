@@ -8,8 +8,6 @@ The research question: **can an agent organization learn strategy by being score
 
 > Status: exploratory. Run 001 used the original sub-agent orchestration. Runs 002 and 003 used a separate, manually orchestrated harness that follows the same era prompts, with one model generating each run's department perspectives, board decisions, and judging. None is a controlled replication. See [the run limitations and experiment plan](docs/limitations-and-v2.md).
 
-> **Review corrections (29 Sep 2026).** Score aggregation differs by run (Run 001 holistic; Run 004 subscore sum × 2; Runs 002–003 mixed), so compare runs with the recomputed column in [`results/all_runs_scores.csv`](results/all_runs_scores.csv). The live/forecast subscores of Runs 002 and 003 were exported one column off and are now corrected. Runs 002–004 were probably generated with Run 001's records visible (Run 002 reuses Run 001's company names for E1–E4), so they are not independent replications. A paper describing the pilot study is in [`paper/`](paper).
-
 ## Run 001 at a glance
 
 | Era | Mode | Company | The call | Score |
