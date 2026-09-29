@@ -10,7 +10,7 @@
 | E3 | 2002 | Ledgerline | Neutral cross-channel conversion ledger / bid management | 58 | ~$11M ARR agency tool; free Google Analytics killed the low end |
 | E4 | 2008 | Clearline | Cross-platform exchange for verified in-app actions | 66 | Sold Bid before Lehman; ~$18M net revenue; Facebook took the auction |
 | E5 | 2014 | Clearsight | GPU-trained judgment API for trust teams | 68 | Cloud Vision commoditized it; ~$22M ARR fraud/trust vendor |
-| E6 | 2020 | Clearproof | Outcome-graded evaluation of pretrained language models | 61 | ~3 years early, rescued by ChatGPT; ~$45M ARR, Galileo tier |
+| E6 | 2020 | Clearproof | Outcome-graded evaluation of pretrained language models | 61 | ~3 years early, rescued by mass-market generative-AI demand; ~$45M ARR, Galileo tier |
 | E7 | 2026 | Proofworks | Rights-bearing RL environments from real enterprise work | 56 | Crowded category; SaaS sold; ~$1–2B by 2031 (forecast) |
 | E8 | 2032 | Clearwork | Neutral clearing house for delegated agent work | 57 | Settle absorbed; data and standards; ~$3–4B by 2039 (forecast) |
 | E9 | 2040 | Clearbond | Bonding house for agents that act without a human signature | 58 | MGA with first loss; ~$3–5B, bought by its carrier (forecast) |

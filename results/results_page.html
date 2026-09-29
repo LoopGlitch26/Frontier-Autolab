@@ -110,9 +110,9 @@ td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
 <body>
 <div class="wrap">
   <header>
-    <span class="eyebrow">Multi-agent simulation · 16 agents · 9 eras · ~45 agent runs</span>
+    <span class="eyebrow">Strategy simulation · 16 named roles · 9 eras per run · 4 qualitative trajectories</span>
     <h1>One startup, fifty years, one job: reinvent toward the frontier</h1>
-    <p class="lede">A 16-person AI org lived through 1990–2020 as training. In each era it decided using only what was knowable then, and a historian-judge then revealed what actually happened and scored the call. From 2026 it forecast without an answer key. The interactive trajectory below shows Run 001; the additional qualitative runs are summarized after it.</p>
+    <p class="lede">The Frontier Lab charter defines sixteen roles and a nine-era strategy exercise. The actual orchestration varies by run: Run 001 used sub-agent orchestration, Runs 002–003 used one model for all role perspectives and judging, and Run 004 used separate department and Red Team contexts. The interactive trajectory below shows Run 001; additional runs are summarized after it.</p>
   </header>
 
   <section class="stack" aria-labelledby="traj">
@@ -138,8 +138,9 @@ td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
       <tr><td>E8 · 2032</td><td>Consequence</td><td>Forecast</td><td>62</td></tr>
       <tr><td>E9 · 2040</td><td>Recourse</td><td>Forecast</td><td>60</td></tr>
     </tbody></table></div>
-    <p class="chart-note">One model supplied all role perspectives and judging; this is not a controlled experiment or independent-agent replication. Historical scores and simulated outcomes are subjective. See <code>runs/run-002/final_synthesis.md</code> and <code>results/run-002-scores.csv</code>.</p>
+    <p class="chart-note">Runs 002 and 003 used a separate, manually orchestrated harness; one model supplied each run’s role perspectives and judging. These are qualitative trajectories, not controlled or independent-agent replications. See <code>runs/run-002/final_synthesis.md</code> and <code>results/run-002-scores.csv</code>.</p>
   </section>
+
 
   <section class="stack" aria-labelledby="run002H">
     <h2 id="run003H">Run 003 · 2026-09-29</h2>
@@ -155,7 +156,24 @@ td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
       <tr><td>E8 · 2032</td><td>WorkPermit</td><td>Forecast</td><td>59</td></tr>
       <tr><td>E9 · 2040</td><td>Delegation Warranty</td><td>Forecast</td><td>55</td></tr>
     </tbody></table></div>
-    <p class="chart-note">One model supplied all role perspectives and judging. This is not an independent-agent run, ablation, or controlled replication. See <code>runs/run-003/final_synthesis.md</code> and <code>results/run-003-scores.csv</code>.</p>
+    <p class="chart-note">Runs 002 and 003 used a separate, manually orchestrated harness; one model supplied each run’s role perspectives and judging. These are qualitative trajectories, not controlled or independent-agent replications. See <code>runs/run-003/final_synthesis.md</code> and <code>results/run-003-scores.csv</code>.</p>
+  </section>
+
+  <section class="stack" aria-labelledby="run004H">
+    <h2 id="run004H">Run 004 · 2026-09-29</h2>
+    <p class="lede">A multi-context role simulation: three separate department contexts, a separate Red Team context, and the root context for board and judging. Named roles shared their department context; this was not sixteen independently instantiated agents. Scores E1–E9 = 60, 62, 62, 70, 70, 72, 66, 68, 66. Training average 66; forecast average 67. Rubrics differ by mode.</p>
+    <div class="table-wrap"><table><thead><tr><th>Era</th><th>Company</th><th>Mode</th><th>Score</th></tr></thead><tbody>
+      <tr><td>E1 · 1990</td><td>Switchyard Systems</td><td>Training</td><td>60</td></tr>
+      <tr><td>E2 · 1996</td><td>Switchyard Systems</td><td>Training</td><td>62</td></tr>
+      <tr><td>E3 · 2002</td><td>Switchyard Commerce Operations</td><td>Training</td><td>62</td></tr>
+      <tr><td>E4 · 2008</td><td>Switchyard Commerce Operations</td><td>Training</td><td>70</td></tr>
+      <tr><td>E5 · 2014</td><td>Switchyard Evidence Operations</td><td>Training</td><td>70</td></tr>
+      <tr><td>E6 · 2020</td><td>Switchyard Evidence Operations</td><td>Training</td><td>72</td></tr>
+      <tr><td>E7 · 2026</td><td>Caseground</td><td>Live</td><td>66</td></tr>
+      <tr><td>E8 · 2032</td><td>Caseground</td><td>Forecast</td><td>68</td></tr>
+      <tr><td>E9 · 2040</td><td>Caseground</td><td>Forecast</td><td>66</td></tr>
+    </tbody></table></div>
+    <p class="chart-note">Run 004’s full briefings, memos, critiques, board decisions, and audits are in <code>runs/run-004/</code>; subscores are in <code>results/run-004-scores.csv</code>. Scores are subjective; E8–E9 have no answer key.</p>
   </section>
 
   <section class="stack" aria-labelledby="eraH">

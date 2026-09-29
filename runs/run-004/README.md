@@ -1,0 +1,13 @@
+# Run 004
+
+Run 004 is a qualitative, multi-context simulation conducted 2026-09-29 using the Frontier Lab's nine-era sequence and scoring rubric. It preserves the Run 001–003 records and is a new trajectory.
+
+## Orchestration and limits
+
+For each era, three department memos were produced in separate assistant sub-agent contexts: Frontier Research (four named roles), Product & Engineering (four roles), and Market & Capital (three roles). A separate Red Team context critiqued the proposals. The root context wrote the dated briefing, convened the simulated executive board, and acted as Record/Auditor for the reveal and scoring. The sixteen charter roles are represented, but this was not sixteen separately instantiated agents: role voices inside each department memo share that department context, and board/judging share the root context. No private chain-of-thought is collected or represented as evidence. This is therefore a multi-context role simulation, not a controlled experiment, independent multi-agent replication, or proof that the Playbook improves strategy.
+
+Historical briefings are bounded to each era's start date as a discipline; model pretraining makes complete hindsight control impossible. Scores are subjective judge assessments. E7 uses current cited sources; E8–E9 are conditional forecasts without an answer key. Consult each era folder for the briefing, three memos, independent critique, decision, reveal, and scorecard. `scores.csv` is the run-level score export; the main repository README summarizes the trajectory.
+
+## Results
+
+See [`final_synthesis.md`](final_synthesis.md), [`company_state.md`](company_state.md), [`playbook.md`](playbook.md), and [`scores.csv`](scores.csv).

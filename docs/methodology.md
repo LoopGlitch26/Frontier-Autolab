@@ -18,7 +18,7 @@ One simulated company is carried through nine eras. Its only mandate is **reinve
 
 E6's window (about 6.7 years) is longer than the others and runs up to the live era.
 
-## 2. Agents
+## 2. Role charter and orchestration
 
 "Agent" here means a named persona with a role and a lens. Personas are voiced by model calls, not run as separate processes.
 
@@ -31,7 +31,7 @@ E6's window (about 6.7 years) is longer than the others and runs up to the live 
 | Governance | Victor Hale (Red Team) | Kills proposals; hunts hype and hindsight |
 | External | The Record (E1–E6), The Auditor (E7–E9) | Briefings, reveals, scoring, lessons |
 
-A department memo is one model call that voices all the department's members. The board meeting is one call voicing the executives and the Red Team. The CEO may restructure the org between eras. In run 001 the Red Team gained a new standing check almost every era (Vocabulary Audit in E4, Convergence Audit in E5, In-sourcing Watch in E7, Absorption Watch in E8, Comfort Audit in E9).
+In Run 001, each department memo was one model call voicing that department's members, and the board was one call voicing the executives and Red Team. The CEO could restructure the org between eras. The Run 001 Red Team gained a new standing check almost every era (Vocabulary Audit in E4, Convergence Audit in E5, In-sourcing Watch in E7, Absorption Watch in E8, Comfort Audit in E9). Runs 002 and 003 used a separate manually orchestrated harness, with one model generating each run's role perspectives, decisions, and judgments. Run 004 used separate persistent contexts for Frontier Research, Product & Engineering, Market & Capital, and Red Team. Each context voiced multiple named roles; the root context wrote briefings and board decisions and served as Record/Auditor. Run 004 represented the charter's roles but did not instantiate sixteen autonomous agents. See individual run records for execution details.
 
 ## 3. The loop (per era)
 
@@ -73,8 +73,15 @@ The total (0–100) is the judge's overall judgement, not a sum of the subscores
 - One model played every role, including the judges.
 - See [run-001-notes.md](run-001-notes.md) for the one operator intervention and the redactions.
 
-## 7. Reporting conventions
+## 7. Execution of Runs 002–004
+
+- Runs 002 and 003 followed the same nine-era sequence and scoring conventions with a separate manual process. In each, one model generated the role perspectives, board decisions, and judging. These are qualitative trajectories, not independent-agent replications.
+- Run 004 split department and Red Team work across persistent contexts. The root context wrote world briefings, board decisions, and Record/Auditor judgments. Each department context voiced multiple charter roles; the roles were not separate autonomous agents.
+- Run 004's mean scores were 66 across training eras E1–E6, 66 for the live E7 era, and 67 across forecasts E8–E9. The three modes use different rubrics; compare them only within mode. Scores are subjective judgments, not empirical outcome measurements.
+- The Python API harness in `../harness/` is a separate implementation and was not used to produce Runs 002–004.
+
+## 8. Reporting conventions
 
 - Eras are cited as `E#` with the start year (for example, E4 · 2008).
-- Quantities from run 001 are reported with n and the source file. Qualitative patterns are attributed to the judge that stated them.
+- Quantities from each run are reported with the relevant era and score export. Qualitative patterns are attributed to the judge that stated them.
 - "Right" or "vindicated" in training eras means the judge found it consistent with history. In live and forecast eras it means only that the Auditor agreed.
