@@ -11,3 +11,9 @@ Scoring files: `scores.csv`. Trajectory and limits: `final_synthesis.md`. Curren
 - **Probable exposure to Run 001.** This run reuses Run 001's company names and theses for E1–E4 (Switchyard, Manifest, Ledgerline, Clearline) and restates Run 001's headline finding. It was probably generated with the repository's Run 001 records visible. Treat it as conditioned on Run 001, not as an independent replication.
 - **Score aggregation.** Totals equal the subscore sum × 2 except E6 (published 72, sum × 2 = 68).
 - **Export correction.** The live and forecast subscores in `scores.csv` were originally shifted one column to the left. They are now placed as playbook_consistency, plausibility, non_consensus, layer_choice, grounded (the order used in Run 003's reveals; this run has no per-era reveals to confirm it). Totals are unchanged.
+
+## Review note (29 Sep 2026)
+
+- **Probable exposure to Run 001.** This run reuses Run 001's company names and theses for E1–E4 (Switchyard, Manifest, Ledgerline, Clearline) and restates Run 001's headline finding. It was probably generated with the repository's Run 001 records visible. Treat it as conditioned on Run 001, not as an independent replication.
+- **Score aggregation.** Totals equal the subscore sum × 2 except E6 (published 72, sum × 2 = 68).
+- **Export correction.** The live and forecast subscores in `scores.csv` were originally shifted one column to the left. They are now placed as playbook_consistency, plausibility, non_consensus, layer_choice, grounded (the order used in Run 003's reveals; this run has no per-era reveals to confirm it). Totals are unchanged.
