@@ -5,6 +5,6 @@ E3,training,Ledgerline,8,6,5,6,5,,,,,60
 E4,training,Clearline,8,7,6,7,5,,,,,66
 E5,training,Vectorial,8,6,6,7,5,,,,,64
 E6,training,Proofline,9,7,7,7,4,,,,,72
-E7,live,Tracewell,,,,,7,7,5,6,8,66
-E8,forecast,Consequence,,,,,7,6,6,5,7,62
-E9,forecast,Recourse,,,,,7,5,7,5,6,60
+E7,live,Tracewell,,,6,,,7,7,5,8,66
+E8,forecast,Consequence,,,5,,,7,6,6,7,62
+E9,forecast,Recourse,,,5,,,7,5,7,6,60
