@@ -6,11 +6,23 @@
 |---|---|
 | n = 1 | The patterns (adjacent-layer choice, dissent accuracy) could be noise from one run. |
 | One model plays every role | Dissent is simulated diversity, and the judge grades reasoning produced by its own priors. |
-| Hindsight is measured, not controlled | The model knows 1990–2026. The anti-hindsight rule is a discipline, not a guarantee. |
+| Hindsight is measured, not controlled | The model knows 1990–2026. The anti-hindsight rule is a discipline, not a guarantee, and the leakage subscore is self-graded. |
+| Learning and leakage are confounded | Training scores rose in E4–E5, the same eras in which the leakage subscore worsened. Run 001 cannot tell improvement from leakage. |
 | No baselines | Nothing shows that the Playbook, the Red Team or the org structure helped. |
 | Outcomes are simulated | Revenues, exits and probabilities are calibrated guesses, and they compound across eras. |
 | Forecast eras are circular | The E8 judge wrote the kill case that became the E9 world. |
-| Operator intervention | The E6 board decision was written by the operator (see run-001-notes.md). |
+| Operator intervention | The E6 board decision, including its GPT-3-like tripwire, was written by the operator (see [run-001-notes.md](run-001-notes.md)). |
+| Qualitative claims are judge-labelled | "Named the frontier", "adjacent layer" and "dissent was right" are the judge's words, not counted metrics. |
+
+## Status of each run-001 observation
+
+| Observation (README) | Evidence in run 001 | What would weaken it | v2 test |
+|---|---|---|---|
+| Named the frontier, built the adjacent layer | Judge reveals for E1, E2, E4, E5; final synthesis §3. E3 is a counterexample. | Same pattern absent in replicates, or present equally in the single-prompt baseline | Layer distance per era, across runs and conditions |
+| Dissent often right when the decision was not | Final synthesis §3 lists vindicated dissents in E1–E8 | Wrong dissents are as common as right ones | Dissent accuracy: share of all logged dissents vindicated |
+| Scores rose as leakage rose | `results/scores.csv`: totals vs `hindsight_leakage` (r ≈ −0.58, n = 6) | Gains persist on fictional or post-cutoff eras | Leakage controls below |
+| Correct idea adopted late | E5–E9 board decisions and reveals | Not a repeated pattern | Qualitative only; report if recurrent |
+| Forecasts are circular | E8 reveal → E9 world briefing | — | Independent briefing author for forecast eras |
 
 ## v2 design
 
@@ -19,6 +31,13 @@
 1. Does scoring against history (with a carried-forward Playbook) improve an agent org's strategic calls over the eras, relative to controls?
 2. How much of any improvement is hindsight leakage, and can leakage be detected by the judge?
 3. Is the "named the frontier, built the adjacent layer" pattern stable across runs and models?
+
+**Pre-registered hypotheses** (to be fixed before running)
+
+- H1: The training-era slope of the total score is higher in `full` than in `no_playbook`.
+- H2: `full` beats `single_prompt` on mean training score.
+- H3: On a fictional era, the judge's leakage subscore does not differ between conditions (a check that the leakage measure is calibrated).
+- H4: Layer distance is "adjacent" more often than "match" in all conditions.
 
 **Conditions** (all supported by `harness/run.py --ablation`)
 
@@ -41,6 +60,7 @@
 
 - Two to three human raters (technology historians or experienced investors) score a stratified sample of eras on the same rubric. Report agreement with the model judges.
 - Swap judges across model families and report how the scores shift.
+- Blind the judge to the condition label.
 
 **Metrics**
 
@@ -49,4 +69,14 @@
 - *Dissent accuracy:* the share of logged dissents the judge marks as vindicated.
 - *Leakage rate:* the judge's leakage subscore, plus the vocabulary probe.
 
-**Expected cost:** roughly 45 calls per run × 4 conditions × 5–10 runs = 900–1,800 calls, plus human rating time.
+**Implementation status in `harness/`**
+
+| Component | Status |
+|---|---|
+| Four ablation conditions, separate player and judge models, full logging, resume | Implemented |
+| Run comparison (per-era totals, per-mode means) | Implemented (`harness.compare`) |
+| Replicate orchestration, custom or fictional era schedules | Not yet |
+| Vocabulary probe, layer distance, dissent accuracy | Not yet (need structured judge output) |
+| Human rating sheets | Not yet |
+
+**Expected cost:** roughly 5 calls per era, about 46 per run with the founding briefing, × 4 conditions × 5–10 runs ≈ 900–1,850 calls, plus human rating time.

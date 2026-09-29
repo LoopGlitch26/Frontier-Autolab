@@ -14,7 +14,7 @@ Consequences:
 
 ## Redactions
 
-The run was performed alongside one founder's own planning. Two passages that applied the simulation to that founder's personal situation were removed before publication:
+The run was performed alongside one founder's own planning. Three passages that applied the simulation to that founder's personal situation were removed before publication:
 
 - `eras/E7/board_decision.md`, section 3 ("Founder cut").
 - `eras/E7/memo_product.md`, the "Founding-team version" sub-section.

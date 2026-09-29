@@ -16,9 +16,13 @@ One simulated company is carried through nine eras. Its only mandate is **reinve
 | E8 | Jan 2032 | forecast | A projected world (no ground truth) |
 | E9 | Jan 2040 | forecast | A projected world (no ground truth) |
 
+E6's window (about 6.7 years) is longer than the others and runs up to the live era.
+
 ## 2. Agents
 
-| Group | Agents | Lens |
+"Agent" here means a named persona with a role and a lens. Personas are voiced by model calls, not run as separate processes.
+
+| Group | Personas | Lens |
 |---|---|---|
 | Executive | Mira Castell (CEO), Dev Anand Rao (CTO), Dr. Lena Okafor (Chief Scientist), Tomas Weil (CSO) | Final call, feasibility, which curves bend, where value pools |
 | Frontier Research | Dr. Yuki Harada, Samuel Brandt (Historian), Ines Varga (Futurist), Dr. Kofi Mensah (Measurement) | Emerging capability, analogies, scenarios, what can't be measured |
@@ -39,6 +43,8 @@ A department memo is one model call that voices all the department's members. Th
    - *Live/forecast:* The Auditor checks claims, maps competitors, gives a confidence level and a kill case, and appends lessons tagged `-forecast`.
 5. **Carry forward.** The judge writes the next briefing; the company state and Playbook persist.
 
+Information flow matters for the leakage question: from E2 on, each era's memos see the previous era's reveal, which describes history up to the new era's start date. That is intended. Anything the agents say about events after the start date is leakage.
+
 ## 4. Rules
 
 - **Anti-hindsight** in training eras, enforced by the Red Team and penalised by the judge (the `hindsight_leakage` subscore, 10 = none).
@@ -58,7 +64,7 @@ A department memo is one model call that voices all the department's members. Th
 | reinvention_courage | layer_choice |
 | hindsight_leakage (10 = none) | grounded (10 = no science fiction) |
 
-The total (0–100) is the judge's overall judgement, not a sum of the subscores.
+The total (0–100) is the judge's overall judgement, not a sum of the subscores. Because the two judges use different rubrics, training scores and live/forecast scores should not be averaged together or compared directly.
 
 ## 6. Execution of run 001
 
@@ -66,3 +72,9 @@ The total (0–100) is the judge's overall judgement, not a sum of the subscores
 - Agents read and wrote markdown files with tools. From E7 they could use web search and web fetch.
 - One model played every role, including the judges.
 - See [run-001-notes.md](run-001-notes.md) for the one operator intervention and the redactions.
+
+## 7. Reporting conventions
+
+- Eras are cited as `E#` with the start year (for example, E4 · 2008).
+- Quantities from run 001 are reported with n and the source file. Qualitative patterns are attributed to the judge that stated them.
+- "Right" or "vindicated" in training eras means the judge found it consistent with history. In live and forecast eras it means only that the Auditor agreed.

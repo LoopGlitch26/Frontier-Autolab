@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Frontier Lab: an LLM-simulated startup scored against technology history"
+type: software
+authors:
+  - family-names: Ghosh
+    given-names: Bravish
+repository-code: "https://github.com/LoopGlitch26/frontier-lab"
+license: MIT
+date-released: 2026-09-29
+keywords:
+  - multi-agent systems
+  - large language models
+  - strategy
+  - forecasting
+  - hindsight bias
