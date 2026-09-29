@@ -1,4 +1,4 @@
-# Frontier Lab
+# Frontier Autolab
 
 **A multi-agent startup that reinvents itself across fifty years of technology history.**
 
