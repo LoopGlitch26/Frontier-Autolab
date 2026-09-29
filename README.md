@@ -6,7 +6,7 @@ Sixteen LLM agents with named roles run one company. It lives through 1990–202
 
 The research question: **can an agent organization learn strategy by being scored against history, and does hindsight leakage make that scoring meaningless?**
 
-> Status: exploratory. `runs/run-001` is a single run, and a human operator stepped in once (see below). Treat the results as hypotheses for the controlled experiments described in [docs/limitations-and-v2.md](docs/limitations-and-v2.md).
+> Status: exploratory. `runs/run-001` is a single run. Treat the results as hypotheses for the controlled experiments described in [docs/limitations-and-v2.md](docs/limitations-and-v2.md).
 
 ## Run 001 at a glance
 
