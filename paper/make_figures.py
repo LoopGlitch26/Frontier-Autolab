@@ -38,3 +38,17 @@ fig,ax=plt.subplots(figsize=(3.1,2.6))
 for r,e in runs.items(): ax.scatter([2*sum(v[5]) for v in e],[v[4] for v in e],color=cols[r],marker=mk[r],s=16,label=lab[r])
 ax.plot([50,75],[50,75],color='#999',lw=0.8,ls=':'); ax.set_xlabel('Subscore sum × 2'); ax.set_ylabel('Published total'); ax.set_xlim(50,75); ax.set_ylim(50,75)
 ax.legend(frameon=False,fontsize=7); ax.grid(color='#eeeeee',lw=0.5); fig.tight_layout(); fig.savefig('figures/fig_aggregation.pdf',bbox_inches='tight')
+# Foresight-commitment gap: frontier accuracy vs layer choice per training era
+fig,axs=plt.subplots(1,4,figsize=(6.5,2.0),sharey=True)
+for a,(r,e) in zip(axs,runs.items()):
+    tr=[v for v in e if v[2]=='training']; xs=np.arange(len(tr))
+    fa=[v[5][0] for v in tr]; lc=[v[5][2] for v in tr]
+    a.vlines(xs,lc,fa,color='#bbbbbb',lw=2,zorder=1)
+    a.scatter(xs,fa,color=cols[r],s=18,zorder=3,label='Frontier accuracy')
+    a.scatter(xs,lc,facecolor='white',edgecolor=cols[r],s=18,zorder=3,label='Layer choice')
+    a.set_xticks(xs); a.set_xticklabels([v[0] for v in tr],fontsize=7); a.set_ylim(2.5,9.5)
+    a.set_title(f'{lab[r]}  (mean gap {np.mean(np.array(fa)-np.array(lc)):.2f})',fontsize=8); a.grid(axis='y',color='#eeeeee',lw=0.5)
+axs[0].set_ylabel('Judge subscore (0–10)')
+h1=plt.Line2D([],[],marker='o',ls='',color='#444',label='Frontier accuracy (saw it)'); h2=plt.Line2D([],[],marker='o',ls='',mfc='white',mec='#444',label='Layer choice (built it)')
+fig.legend(handles=[h1,h2],ncol=2,frameon=False,loc='lower center',bbox_to_anchor=(0.5,-0.08),fontsize=7)
+fig.tight_layout(rect=(0,0.06,1,1)); fig.savefig('figures/fig_gap.pdf',bbox_inches='tight')

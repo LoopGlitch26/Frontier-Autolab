@@ -1,4 +1,4 @@
-\begin{thebibliography}{36}
+\begin{thebibliography}{37}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -120,6 +120,11 @@ Ezra Karger, Houtan Bastani, Chen Yueh-Han, Zachary Jacobs, Danny Halawi, Fred
 \newblock {ForecastBench}: A dynamic benchmark of {AI} forecasting
   capabilities.
 \newblock \emph{arXiv preprint arXiv:2409.19839}, 2024.
+
+\bibitem[Kwa et~al.(2025)Kwa, West, Becker, et~al.]{kwa2025timehorizon}
+Thomas Kwa, Ben West, Joel Becker, et~al.
+\newblock Measuring {AI} ability to complete long tasks.
+\newblock \emph{arXiv preprint arXiv:2503.14499}, 2025.
 
 \bibitem[Levitt and March(1988)]{levitt1988organizational}
 Barbara Levitt and James~G. March.
