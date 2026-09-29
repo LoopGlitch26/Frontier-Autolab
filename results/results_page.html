@@ -112,7 +112,7 @@ td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
   <header>
     <span class="eyebrow">Multi-agent simulation · 16 agents · 9 eras · ~45 agent runs</span>
     <h1>One startup, fifty years, one job: reinvent toward the frontier</h1>
-    <p class="lede">A 16-person AI org lived through 1990–2020 as training. In each era it decided using only what was knowable then, and a historian-judge then revealed what actually happened and scored the call. From 2026 it forecast without an answer key. The interactive trajectory below shows Run 001; the separate v2 pilot is summarized after it.</p>
+    <p class="lede">A 16-person AI org lived through 1990–2020 as training. In each era it decided using only what was knowable then, and a historian-judge then revealed what actually happened and scored the call. From 2026 it forecast without an answer key. The interactive trajectory below shows Run 001; the additional qualitative runs are summarized after it.</p>
   </header>
 
   <section class="stack" aria-labelledby="traj">
@@ -124,8 +124,8 @@ td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
     </div>
   </section>
 
-  <section class="stack" aria-labelledby="pilotH">
-    <h2 id="pilotH">v2 pilot · 2026-09-29</h2>
+  <section class="stack" aria-labelledby="run002H">
+    <h2 id="run002H">Run 002 · 2026-09-29</h2>
     <p class="lede">A separate one-model qualitative run. Scores: E1–E9 = 62, 66, 60, 66, 64, 72, 66, 62, 60. Training average 65; forecast average (E8–E9) 61. Its historical and forecast rubrics differ, so compare within modes only.</p>
     <div class="table-wrap"><table><thead><tr><th>Era</th><th>Company</th><th>Mode</th><th>Score</th></tr></thead><tbody>
       <tr><td>E1 · 1990</td><td>Switchyard</td><td>Training</td><td>62</td></tr>
@@ -138,7 +138,24 @@ td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
       <tr><td>E8 · 2032</td><td>Consequence</td><td>Forecast</td><td>62</td></tr>
       <tr><td>E9 · 2040</td><td>Recourse</td><td>Forecast</td><td>60</td></tr>
     </tbody></table></div>
-    <p class="chart-note">One model supplied all role perspectives and judging; this is not a controlled v2 experiment or independent-agent replication. Historical scores and simulated outcomes are subjective. See <code>runs/v2/final_synthesis.md</code> and <code>results/v2-scores.csv</code>.</p>
+    <p class="chart-note">One model supplied all role perspectives and judging; this is not a controlled experiment or independent-agent replication. Historical scores and simulated outcomes are subjective. See <code>runs/run-002/final_synthesis.md</code> and <code>results/run-002-scores.csv</code>.</p>
+  </section>
+
+  <section class="stack" aria-labelledby="run002H">
+    <h2 id="run003H">Run 003 · 2026-09-29</h2>
+    <p class="lede">A second one-model qualitative trajectory. Scores: E1–E9 = 60, 58, 63, 65, 61, 68, 64, 59, 55. Training average 62.5; forecast average (E8–E9) 57. Historical hindsight scores are subjective and the forecast has no answer key.</p>
+    <div class="table-wrap"><table><thead><tr><th>Era</th><th>Company</th><th>Mode</th><th>Score</th></tr></thead><tbody>
+      <tr><td>E1 · 1990</td><td>Porthole Networks</td><td>Training</td><td>60</td></tr>
+      <tr><td>E2 · 1996</td><td>PageSignal</td><td>Training</td><td>58</td></tr>
+      <tr><td>E3 · 2002</td><td>Clinisphere</td><td>Training</td><td>63</td></tr>
+      <tr><td>E4 · 2008</td><td>ClaimGraph</td><td>Training</td><td>65</td></tr>
+      <tr><td>E5 · 2014</td><td>BenefitFlow</td><td>Training</td><td>61</td></tr>
+      <tr><td>E6 · 2020</td><td>LineSight</td><td>Training</td><td>68</td></tr>
+      <tr><td>E7 · 2026</td><td>FlowCheck</td><td>Live</td><td>64</td></tr>
+      <tr><td>E8 · 2032</td><td>WorkPermit</td><td>Forecast</td><td>59</td></tr>
+      <tr><td>E9 · 2040</td><td>Delegation Warranty</td><td>Forecast</td><td>55</td></tr>
+    </tbody></table></div>
+    <p class="chart-note">One model supplied all role perspectives and judging. This is not an independent-agent run, ablation, or controlled replication. See <code>runs/run-003/final_synthesis.md</code> and <code>results/run-003-scores.csv</code>.</p>
   </section>
 
   <section class="stack" aria-labelledby="eraH">

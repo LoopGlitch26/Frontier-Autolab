@@ -6,7 +6,7 @@ Sixteen LLM agents with named roles run one company. It lives through 1990–202
 
 The research question: **can an agent organization learn strategy by being scored against history, and does hindsight leakage make that scoring meaningless?**
 
-> Status: exploratory. `runs/run-001` is one harness run; `runs/v2` is a separate qualitative pilot, not a controlled replication. Treat both as hypotheses for the experiments described in [docs/limitations-and-v2.md](docs/limitations-and-v2.md).
+> Status: exploratory. `runs/run-001` is one harness run; `runs/run-002` and `runs/run-003` are separate ChatGPT-generated qualitative runs, not controlled replications. Treat all results as hypotheses for the experiments described in [docs/limitations-and-v2.md](docs/limitations-and-v2.md).
 
 ## Run 001 at a glance
 
@@ -24,9 +24,25 @@ The research question: **can an agent organization learn strategy by being score
 
 Training average 60, forecast average 57. Subscores are in [`results/scores.csv`](results/scores.csv), and an interactive view is in [`results/results_page.html`](results/results_page.html).
 
-## v2 pilot (2026-09-29)
+## Run 002 at a glance
 
-A fresh qualitative run scored 62, 66, 60, 66, 64, 72, 66, 62, 60 across E1–E9 (training average 65; forecast average 61). Its artifacts and caveats are in [`runs/v2`](runs/v2), with a separate score export at [`results/v2-scores.csv`](results/v2-scores.csv). This one-model role-play is not an independent-agent run, controlled ablation, or evidence that the Playbook improves performance.
+| Era | Mode | Company | The call | Score |
+|---|---|---|---|---:|
+| 1990 | training | Porthole Networks | Mixed-network diagnostics | 60 |
+| 1996 | training | PageSignal | Web uptime monitoring | 58 |
+| 2002 | training | Clinisphere | Hosted clinic workflow | 63 |
+| 2008 | training | ClaimGraph | Verified digital claims evidence | 65 |
+| 2014 | training | BenefitFlow | Mobile benefits enrollment | 61 |
+| 2020 | training | LineSight | Industrial vision validation | 68 |
+| 2026 | live | FlowCheck | Acceptance tests for an AI claims workflow | 64 |
+| 2032 | forecast | WorkPermit | Scoped authority for delegated tasks | 59 |
+| 2040 | forecast | Delegation Warranty | Capped recourse for a narrow delegated transaction | 55 |
+
+Training average 62.5; forecast average 57. This is a one-model qualitative run; its complete caveats and era records are in [`runs/run-002`](runs/run-002), with scores at [`results/run-002-scores.csv`](results/run-002-scores.csv).
+
+## Run 003 at a glance
+
+A fresh qualitative run scored 62, 66, 60, 66, 64, 72, 66, 62, 60 across E1–E9 (training average 65; forecast average 61). Its artifacts and caveats are in [`runs/run-003`](runs/run-003), with a separate score export at [`results/run-003-scores.csv`](results/run-003-scores.csv). This one-model role-play is not an independent-agent run, controlled ablation, or evidence that the Playbook improves performance.
 
 **Main observations (from one run: hypotheses, not findings)**
 
@@ -63,7 +79,9 @@ runs/run-001/       every briefing, memo, board decision and reveal from run 001
   company_state.md  identities, capital and outcomes across eras
   roster.md         how the org restructured itself
   final_synthesis.md
-results/            run-001 and v2 pilot score exports, results_page.html
+runs/run-002/       qualitative run records, company state, Playbook, synthesis
+runs/run-003/       qualitative run records, company state, Playbook, synthesis
+results/            run-001, run-002, and run-003 score exports, results_page.html
 docs/               methodology, run notes, limitations and v2 plan
 ```
 
@@ -79,7 +97,7 @@ export ANTHROPIC_API_KEY=...
 python -m harness.run --run-id dry --dry-run
 
 # a full run: separate models for players and judges is recommended
-python -m harness.run --run-id run-002 --player-model <model-id> --judge-model <other-model-id> --web-search
+python -m harness.run --run-id run-003 --player-model <model-id> --judge-model <other-model-id> --web-search
 
 # ablations
 python -m harness.run --run-id abl-noplaybook --ablation no_playbook   --player-model <id> --judge-model <id>
@@ -87,7 +105,7 @@ python -m harness.run --run-id abl-noredteam  --ablation no_redteam    --player-
 python -m harness.run --run-id abl-single     --ablation single_prompt --player-model <id> --judge-model <id>
 
 # compare runs
-python -m harness.compare runs/run-001 runs/run-002 runs/abl-noplaybook
+python -m harness.compare runs/run-001 runs/run-002 runs/run-003 runs/abl-noplaybook
 ```
 
 Every prompt and raw response is logged under `runs/<run-id>/logs/`. Runs resume: completed eras are skipped.

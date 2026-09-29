@@ -1,4 +1,4 @@
-# Company state — v2
+# Company state — run 002
 
 Initial capital: $1.5M seed. Era-end capital and outcomes below are simulated, not observed.
 
