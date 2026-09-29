@@ -22,7 +22,7 @@ The research question: **can an agent organization learn strategy by being score
 | 2032 | forecast | Clearwork | Clearing house for delegated agent work | 57 |
 | 2040 | forecast | Clearbond | Bonding house for agents acting without a human signature | 58 |
 
-Training average 60, forecast average 57. Subscores are in [`results/scores.csv`](results/scores.csv), and an interactive view is in [`results/results_page.html`](results/results_page.html).
+Training average 60; forecast average 57.5. Subscores are in [`results/scores.csv`](results/scores.csv), and an interactive view is in [`results/results_page.html`](results/results_page.html).
 
 ## Run 002 at a glance
 
